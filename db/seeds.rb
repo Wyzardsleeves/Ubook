@@ -9,7 +9,9 @@
 User.create!([
   {email: "test1@gmail.com", password: "helloworld"},
   {email: "test2@gmail.com", password: "helloworld"},
-  {email: "admin1@gmail.com", password: "helloworld"}
+  {email: "admin1@gmail.com", password: "helloworld"},
+  {email: "admin2@gmail.com", password: "helloworld"},
+  {email: "chiefAdmin@gmail.com", password: "helloworld"}
 ])
 
 puts "#{User.count} users created!"

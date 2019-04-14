@@ -48,6 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry', '~> 0.12.2'
 end
 
 group :production do #added by moi
@@ -60,3 +61,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Stuff that I have installed
 gem 'devise' #rails g devise:views to add custom views
+gem 'pundit'
