@@ -2,7 +2,7 @@
 
 ## Ubook is the Youtube of books
 
-Things you may want to cover:
+Tech Used:
 
 * Ruby Version: 2.5.3 (x86_64-linux)
 
@@ -11,5 +11,13 @@ Things you may want to cover:
 * Postgres
 
 * RSpec
+
+* ...
+
+Instructions:
+
+* Run > rails s
+
+* Run > npm run webpack
 
 * ...

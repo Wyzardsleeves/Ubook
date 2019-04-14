@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+body{
+  nav{
+    .ubook-logo{
+        img {
+        height: 3rem;
+        padding-top: 0.25rem;
+        position: absolute;
+        top: 10px;
+      }
+    }
+  }
+}

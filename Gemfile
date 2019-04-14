@@ -62,3 +62,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Stuff that I have installed
 gem 'devise' #rails g devise:views to add custom views
 gem 'pundit'
+gem 'webpacker', '~> 4.x'

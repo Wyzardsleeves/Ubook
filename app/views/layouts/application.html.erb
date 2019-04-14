@@ -7,11 +7,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- From React -->
+    <%= javascript_pack_tag 'hello_react' %>
   </head>
 
   <body>
+    <nav class="navbar indigo lighten-3">
+      <section class="container">
+        <div class="ubook-logo logo">
+          <%= image_tag("UBook-logo.png") %>
+        </div>
+        <div class="bullet-links">
+
+        </div>
+      </section>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
