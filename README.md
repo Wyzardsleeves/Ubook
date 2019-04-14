@@ -4,13 +4,11 @@
 
 Things you may want to cover:
 
-* Ruby 2.5.3p105
+* Ruby Version: 2.5.3 (x86_64-linux)
 
-* Rails 5.2.3
+* Rails Version: 5.2.3
 
 * Postgres
-
-* Database initialization
 
 * RSpec
 
