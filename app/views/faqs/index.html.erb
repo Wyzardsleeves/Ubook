@@ -1,8 +1,14 @@
 <div class="container">
+  <% if current_user %>
+    <%= link_to "New FAQ", new_faq_path, class: "btn" %>
+  <% end %>
   <% @faqs.each do |faq| %>
     <div>
-      <h4>Q: <%= faq.question %></h4>
-      <h4>A: <%= faq.answer %></h4>
+      <h5>Q: <%= faq.question %></h5>
+      <h5>A: <%= faq.answer %></h5>
+      <% if current_user %>
+        <%= link_to "Delete", faq, method: :delete, data: {confirm: "Are you sure you want to delete this?"}, class: "btn-small red lighten-1" %>
+      <% end %>
     </div>
   <% end %>
 </div>
