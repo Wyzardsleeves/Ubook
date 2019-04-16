@@ -14,8 +14,19 @@ User.create!([
   {email: "chiefAdmin@gmail.com", password: "helloworld"}
 ])
 
+Faq.create!([
+  {question: "What is this site about?", answer: "This site is basically the Youtube of books!"},
+  {question: "What formats can I upload?", answer: "At the moment we are only taking PDF's"},
+  {question: "Can I monetize the books I upload?", answer: "I'm working on it. I just gave birth, give me a chance to cut the umbilical!"}
+])
+
 puts "#{User.count} users created!"
+puts "#{Faq.count} frequently asked questions created!"
 
 User.all.each do |x|
   puts "#{x.email} made!"
+end
+
+Faq.all.each do |x|
+  puts "#{x.question} - #{x.answer}"
 end

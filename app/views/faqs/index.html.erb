@@ -1,0 +1,8 @@
+<div class="container">
+  <% @faqs.each do |faq| %>
+    <div>
+      <h4>Q: <%= faq.question %></h4>
+      <h4>A: <%= faq.answer %></h4>
+    </div>
+  <% end %>
+</div>
