@@ -1,16 +1,24 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class Books extends Component{
   constructor(props){
     super(props);
     this.state = {
+      books: [],
       shoes: 'Nike',
       pets: 'Dogs'
     }
   }
 
   componentWillMount(){
+    this.getBooks();
+  }
 
+  getBooks = () => {
+    axios.get('/books/')
+    .then((response) => this.setState({books: response.data}))
+    .catch((error) => alert(error.message))
   }
 
   render(){
@@ -24,6 +32,12 @@ class Books extends Component{
             <div>
               <ul>
                 {/* A .map function will go here for the recently added books */}
+                {this.state.books.map((book) =>
+                  <li key={book.id}>
+                    <h5>{book.title}</h5>
+                    <p>{book.description}</p>
+                  </li>
+                )}
               </ul>
             </div>
           </section>

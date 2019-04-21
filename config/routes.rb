@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'books/index'
-  get 'books/new'
-  get 'books/show'
+  resources :books
   resources :faqs
 
   devise_for :users

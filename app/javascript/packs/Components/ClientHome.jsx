@@ -12,6 +12,7 @@ class ClientHome extends Component{
       //Switch funcion is here
       <Switch>
         <Route exact path="/" component={Books} />
+        <Route path="/book/:id" component={BookShow} />
       </Switch>
     )
   }

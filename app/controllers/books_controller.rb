@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show destroy]
 
   def index
-    @books = Books.all
+    @books = Book.all
     render json: @books, status: :ok
   end
 
