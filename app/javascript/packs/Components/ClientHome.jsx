@@ -9,6 +9,7 @@ import {Switch, Route} from 'react-router-dom'
 class ClientHome extends Component{
   render(){
     return(
+      //Switch funcion is here
       <Switch>
         <Route exact path="/" component={Books} />
       </Switch>
