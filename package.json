@@ -1,5 +1,6 @@
 {
   "name": "Ubook",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
@@ -17,5 +18,8 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^3.3.1"
-  }
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/Wyzardsleeves/Ubook.git",
+  "author": "Justin Lattimore <jlattimoreweb@gmail.com>"
 }
