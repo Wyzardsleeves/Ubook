@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import BookShow from './BookShow';
+import SubNavBar from './SubNavBar';
 
 
 class Books extends Component{
@@ -49,7 +50,6 @@ class Books extends Component{
           <section>
             <div>
               <h3>Recently Added</h3>
-              <button className="btn green lighten-1" onClick={this.newBook}>Post</button>
             </div>
             <div>
               <ul>
@@ -60,7 +60,6 @@ class Books extends Component{
                       <h5>{book.title}</h5>
                     </Link>
                     <p>{book.description}</p>
-                    <button className="btn red lighten-2" onClick={(e) => this.destroyBook(book.id, e)}>Destroy</button>
                   </li>
                 )}
               </ul>

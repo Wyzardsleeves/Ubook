@@ -22,7 +22,13 @@ class BooksController < ApplicationController
   end
 
   def update
-    #This will update
+    @book = Book.find(params[:id])
+    @book.update!(book_params)
+    if @book.save
+      render json: {success: "Selected book(s) was successfully updated!"}
+    else
+      render json: {error: "Book deletion failed"}
+    end
   end
 
   def destroy
