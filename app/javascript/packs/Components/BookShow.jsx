@@ -1,23 +1,30 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
+import {Document, Page} from 'react-pdf';
+import BookComments from './BookComments'
 
 class BookShow extends Component{
   constructor(props){
     super(props);
     this.state = {
-      book: {}
+      book: {},
+      numPages: null,
+      pageNumber: 1
     }
   }
 
   componentWillMount(){
-    console.log(this.props);
     this.getBook();
+  }
+
+  onDocumentLoadSuccess = ({numPages}) => {
+    this.setState({numPages});
   }
 
   getBook = () => {
     axios.get(`/books/${this.props.match.params.id}`)
-    .then((response) => {this.setState({book: response.data})})
+    .then((response) => {this.setState({book: response.data}, console.log(response.data))})
     .catch((error) => {console.log(error.message)})
   }
 
@@ -26,8 +33,8 @@ class BookShow extends Component{
   }
 
   destroyConfirm = () => {
-    let c = window.confirm("Are you sure you want to delete this book?");
-    if(c){
+    let confirm = window.confirm("Are you sure you want to delete this book?");
+    if(confirm){
       this.destroyBook();
     }
   }
@@ -41,13 +48,26 @@ class BookShow extends Component{
   }
 
   render(){
+    const {pageNumber, numPages} = this.state;
+    const bookIndex = this.props.match.params.id;
     return(
-      <div className="container">
-        <h3>This is the Show page for a book</h3>
-        <h5>{this.state.book.title}</h5>
-        <h5>{this.state.book.description}</h5>
-        <button className="btn orange lighten-2" onClick={this.goToEdit} style={{marginRight: "10px"}}>Update {this.state.book.title}</button>
-        <button className="btn red lighten-2" onClick={this.destroyConfirm}>Delete {this.state.book.title}</button>
+      <div className="show-book-comp">
+        <div className="container">
+          <h3><i className="fas fa-book"></i>{this.state.book.title}</h3>
+          <button className="btn orange lighten-2" onClick={this.goToEdit} style={{marginRight: "10px"}}>Update Book</button>
+          <button className="btn red lighten-2" onClick={this.destroyConfirm}>Delete Book</button>
+          <h5>{this.state.book.description}</h5>
+          <div>
+            <Document
+              file={this.state.book.document}
+              onLoadSuccess={this.onDocumentLoadSuccess}
+            >
+              <Page pageNumber={pageNumber} />
+            </Document>
+            <p>Page {pageNumber} of {numPages}</p>
+          </div>
+          <BookComments bookIndex={bookIndex} />
+        </div>
       </div>
     )
   }

@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  skip_before_action :verify_authenticity_token, raise: false
 
   def index
     @books = Book.all
@@ -8,14 +7,17 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    render json: @book, status: :ok
+    #render json: @book.as_json(include: :document), status: :ok
+    #render json: @book.as_json.merge(attachment: @book.document.attachment), status: :ok
+    render json: @book.as_json.merge(attachment: url_for(@book.document)), status: :ok
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    if @book.save
-      render json: {success: "#{@book.title} was saved successfully!"}
+    book = Book.new(book_params)
+    book.user_id = current_user.id
+    #book.document.attach(params[:document])
+    if book.save
+      render json: {success: "#{book.title} was saved successfully!"}
     else
       render json: {error: "Book creation failed"}
     end
@@ -43,6 +45,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.permit(:title, :description, :user_id)
+    params.require(:book).permit(:title, :description, :user_id, :document)
   end
 end

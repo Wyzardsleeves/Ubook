@@ -17,6 +17,6 @@
 
 let logoClick = document.getElementsByClassName('ubook-logo-png')[0];
 
-logoClick.addEventListener("click", function(){
-  console.log("This is working");
+logoClick.addEventListener("click", () => {
+  window.location.replace('/');
 });

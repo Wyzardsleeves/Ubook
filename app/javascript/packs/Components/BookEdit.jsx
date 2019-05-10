@@ -43,11 +43,11 @@ class BookEdit extends Component{
 
   render(){
     return(
-      <section className="new-book-comp">
+      <section className="edit-book-comp">
         <div className="container">
           <section>
             <div>
-              <h3>Edit Book</h3>
+              <h3><i className="fas fa-edit"></i>Edit Book</h3>
             </div>
             <div>
               <form id="new-book-form" onSubmit={this.editBook}>

@@ -13,25 +13,29 @@
  *= require_tree .
  *= require_self
  */
-
-body{
-  .navbar{
-    color: black;
-    .logo{
-        .ubook-logo-png{
-        height: 3rem;
-        padding-top: 0.25rem;
-        position: absolute;
-        top: 10px;
+html{
+  body{
+    .navbar{
+      color: black;
+      .logo{
+          .ubook-logo-png{
+          height: 3rem;
+          padding-top: 0.25rem;
+          position: absolute;
+          top: 10px;
+        }
+        .ubook-logo-png:hover{
+          cursor:pointer;
+        }
       }
-    }
-    .bullet-links{
-      ul{
-        li{
-          a{
-            color: black;
-            i{
-              height: 100%;
+      .bullet-links{
+        ul{
+          li{
+            a{
+              color: black;
+              i{
+                height: 100%;
+              }
             }
           }
         }

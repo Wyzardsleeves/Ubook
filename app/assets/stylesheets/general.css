@@ -1,3 +1,13 @@
+.show-book-comp i{
+  padding: 0 1rem 0 0;
+}
+.new-book-comp i{
+  padding: 0 1rem 0 0;
+}
+.edit-book-comp i{
+  padding: 0 1rem 0 0;
+}
+
 .sub-nav-bar{
   border-bottom: solid 1px lightgrey;
   height: 2.2rem;
@@ -12,5 +22,9 @@
 }
 
 .sub-nav-bar .sec-2{
+
+}
+
+.book-comment{
 
 }
