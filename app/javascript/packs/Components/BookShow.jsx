@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
-import {Document, Page} from 'react-pdf';
+import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import BookComments from './BookComments'
 
 class BookShow extends Component{
@@ -10,12 +10,19 @@ class BookShow extends Component{
     this.state = {
       book: {},
       numPages: null,
-      pageNumber: 1
+      pageNumber: 1,
+      widthIndex: null
     }
   }
 
   componentWillMount(){
     this.getBook();
+  }
+
+  componentDidMount(){
+    console.log(this.refs);
+    let getWidth = this.refs.containwidth.clientWidth;
+    this.setState({widthIndex: getWidth}, console.log(this.state.widthIndex));
   }
 
   onDocumentLoadSuccess = ({numPages}) => {
@@ -47,22 +54,31 @@ class BookShow extends Component{
     location.reload();
   }
 
+  sizeRef = (ele) => {
+    console.log(ele.current.clientWidth);
+  }
+
   render(){
     const {pageNumber, numPages} = this.state;
     const bookIndex = this.props.match.params.id;
     return(
       <div className="show-book-comp">
-        <div className="container">
-          <h3><i className="fas fa-book"></i>{this.state.book.title}</h3>
+        <div ref="containwidth" className="container">
+          <NavLink to={`/book/read`}>
+            <h3><i className="fas fa-book"></i>{this.state.book.title}</h3>
+          </NavLink>
           <button className="btn orange lighten-2" onClick={this.goToEdit} style={{marginRight: "10px"}}>Update Book</button>
           <button className="btn red lighten-2" onClick={this.destroyConfirm}>Delete Book</button>
           <h5>{this.state.book.description}</h5>
           <div>
             <Document
-              file={this.state.book.document}
+              file={this.state.book.attachment}
               onLoadSuccess={this.onDocumentLoadSuccess}
             >
-              <Page pageNumber={pageNumber} />
+              <Page pageNumber={pageNumber}
+                renderMode="svg"
+                width={this.state.widthIndex}
+              />
             </Document>
             <p>Page {pageNumber} of {numPages}</p>
           </div>

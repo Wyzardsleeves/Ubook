@@ -4,7 +4,8 @@ import Books from './Books';
 import BookShow from './BookShow';
 import BookEdit from './BookEdit';
 import BookNew from './BookNew';
-import SubNavBar from './SubNavBar'
+import SubNavBar from './SubNavBar';
+import BookRead from './BookRead';
 
 
 //router
@@ -19,6 +20,7 @@ class ClientHome extends Component{
           <Route exact path="/" component={Books} />
           <Route path="/book/new/" component={BookNew} exact strict />
           <Route path="/book/edit/:id" component={BookEdit} exact strict />
+          <Route path="/book/read/" component={BookRead} exact />
           <Route path="/book/:id/" component={BookShow} />
         </Switch>
       </div>
