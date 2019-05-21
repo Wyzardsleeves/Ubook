@@ -11,7 +11,7 @@ class BookShow extends Component{
       book: {},
       numPages: null,
       pageNumber: 1,
-      widthIndex: null
+      widthIndex: null,
     }
   }
 
@@ -20,9 +20,7 @@ class BookShow extends Component{
   }
 
   componentDidMount(){
-    console.log(this.refs);
-    let getWidth = this.refs.containwidth.clientWidth;
-    this.setState({widthIndex: getWidth}, console.log(this.state.widthIndex));
+    this.getImageWidth();
   }
 
   onDocumentLoadSuccess = ({numPages}) => {
@@ -37,6 +35,10 @@ class BookShow extends Component{
 
   goToEdit = () => {
     this.props.history.push(`/book/edit/${this.props.match.params.id}`);
+  }
+
+  getImageWidth = () => {
+    this.setState({widthIndex: this.refs.bookContain.clientWidth});
   }
 
   destroyConfirm = () => {
@@ -54,34 +56,30 @@ class BookShow extends Component{
     location.reload();
   }
 
-  sizeRef = (ele) => {
-    console.log(ele.current.clientWidth);
-  }
 
   render(){
     const {pageNumber, numPages} = this.state;
     const bookIndex = this.props.match.params.id;
     return(
       <div className="show-book-comp">
-        <div ref="containwidth" className="container">
-          <NavLink to={`/book/read`}>
-            <h3><i className="fas fa-book"></i>{this.state.book.title}</h3>
-          </NavLink>
-          <button className="btn orange lighten-2" onClick={this.goToEdit} style={{marginRight: "10px"}}>Update Book</button>
-          <button className="btn red lighten-2" onClick={this.destroyConfirm}>Delete Book</button>
-          <h5>{this.state.book.description}</h5>
-          <div>
-            <Document
-              file={this.state.book.attachment}
-              onLoadSuccess={this.onDocumentLoadSuccess}
-            >
-              <Page pageNumber={pageNumber}
-                renderMode="svg"
-                width={this.state.widthIndex}
-              />
-            </Document>
-            <p>Page {pageNumber} of {numPages}</p>
-          </div>
+        <div className="container">
+          <h3><i className="fas fa-book"></i>{this.state.book.title}</h3>
+          <section className="card-panel grey lighten-4">
+            <section className="book-show-image" ref="bookContain">
+              <Document file={this.state.book.attachment} onLoadSuccess={this.onDocumentLoadSuccess}>
+                <Page pageNumber={1} renderTextLayer={false} width={this.state.widthIndex} />
+              </Document>
+            </section>
+            <div className="book-show-info">
+              <p>{numPages} total pages.</p>
+              <NavLink to={`/read/${bookIndex}`}>
+                <p className="card blue lighten-1">START READING</p>
+              </NavLink><br/>
+              <button className="btn orange lighten-2" onClick={this.goToEdit} style={{marginRight: "10px"}}>Update Book</button>
+              <button className="btn red lighten-2" onClick={this.destroyConfirm}>Delete Book</button>
+              <h5>{this.state.book.description}</h5>
+            </div>
+          </section>
           <BookComments bookIndex={bookIndex} />
         </div>
       </div>

@@ -1,3 +1,5 @@
+
+
 .show-book-comp i{
   padding: 0 1rem 0 0;
 }
@@ -32,4 +34,119 @@
 .react-pdf__Page__canvas{
   width: 100%;
   height: 100%;
+}
+
+/* Control buttons */
+.control-buttons table{
+}
+
+.control-buttons i{
+  background-color: #efefef;
+  font-size: 2rem;
+  border-radius: 5px;
+  padding: 7px 1rem;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.controls-left{
+
+}
+
+.controls-center{
+  text-align:center;
+}
+
+.controls-right{
+
+}
+
+.page-change-form{
+  padding: 0;
+  display: inline-block;
+  width: 210px;
+}
+.page-change-form h5{
+  padding: 0;
+  font-size: 18px;
+  display: inline-block;
+}
+.page-change-form form{
+  padding: 0;
+  margin: 0 10px;
+  display: inline-block;
+  width: 40px;
+}
+.page-change-bot{
+  font-size: 12px;
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+.input-field[type="text"]{
+    font-size:34px;
+}
+
+.book{
+  margin: 0 10px;
+  width: 215px;
+  display: inline-block;
+}
+
+.book-thumb{
+  min-height: 230px;
+}
+
+.book a h5{
+  font-size: 17px;
+  margin: 0
+
+}
+
+.title-img{
+  border-radius: 5px;
+  width: 100%;
+  height: 215px;
+  overflow:hidden;
+}
+
+.book td{
+  padding: 0;
+}
+
+.sub-part i, .sub-part p{
+  display: inline-block;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.sub-part i{
+  padding: 0 0.5rem 0 0;
+}
+
+.book-show-image{
+  display: inline-block;
+  width: 50%;
+}
+
+.card-panel{
+
+}
+
+.book-show-info{
+  display: inline-block;
+  padding: 0 0 0 2rem;
+  width: 50%;
+  vertical-align: top;
+}
+
+.book-show-info a{
+  color: white;
+}
+
+.book-show-info a p{
+  font-size: 1rem;
+  margin: 0 0 0.7rem 0;
+  padding: 0.5rem 5.4rem;
+  display: inline-block;
 }

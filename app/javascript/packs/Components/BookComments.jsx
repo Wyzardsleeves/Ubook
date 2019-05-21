@@ -41,7 +41,7 @@ class BookComments extends Component{
   render(){
     return(
       <div>
-        <h4><i className="fas fa-comments"></i>{this.state.book_comments.length} Comments</h4>
+        <h4><i className="fas fa-comments"></i>{this.state.book_comments.length} Comment(s)</h4>
         <form onSubmit={this.postComment}>
           <input type="text" placeholder="Type comment here..... " ref="commentField" />
           <button type="submit" className="btn btn-small">Post Comment</button>

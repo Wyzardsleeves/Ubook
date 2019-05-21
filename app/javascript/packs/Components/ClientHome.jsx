@@ -20,8 +20,8 @@ class ClientHome extends Component{
           <Route exact path="/" component={Books} />
           <Route path="/book/new/" component={BookNew} exact strict />
           <Route path="/book/edit/:id" component={BookEdit} exact strict />
-          <Route path="/book/read/" component={BookRead} exact />
-          <Route path="/book/:id/" component={BookShow} />
+          <Route path="/read/:id/" component={BookRead} exact />
+          <Route path="/book/:id/" component={BookShow} exact />
         </Switch>
       </div>
     )

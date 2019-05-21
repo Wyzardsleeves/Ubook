@@ -2,13 +2,13 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    render json: @books, status: :ok
+    #render json: @books, status: :ok
+    render json: @books.map { |book| book.as_json.merge(attachment: url_for(book.document), commentCount: book.book_comments.count) }
   end
 
   def show
     @book = Book.find(params[:id])
     #render json: @book.as_json(include: :document), status: :ok
-    #render json: @book.as_json.merge(attachment: @book.document.attachment), status: :ok
     render json: @book.as_json.merge(attachment: url_for(@book.document)), status: :ok
   end
 

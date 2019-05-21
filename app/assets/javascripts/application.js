@@ -14,9 +14,3 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-let logoClick = document.getElementsByClassName('ubook-logo-png')[0];
-
-logoClick.addEventListener("click", () => {
-  window.location.replace('/');
-});
