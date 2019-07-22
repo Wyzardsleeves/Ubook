@@ -16,7 +16,10 @@ class BookComments extends Component{
 
   getBookComments = () => {
     axios.get(`/books/${this.props.bookIndex}/book_comments/`)
-    .then((response) => {this.setState({book_comments: response.data}, console.log(response.data))})
+    .then((response) => {
+      this.setState({book_comments: response.data});
+      console.log(response.data);
+    })
     .catch((error) => {console.log(error.message)})
   }
 

@@ -133,6 +133,36 @@
 
 }
 
+.like-button{
+  padding: 0.5rem;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.like-button i{
+  padding: 0;
+  margin: 0;
+}
+
+.like-button:hover{
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+
+.liked-button{
+  padding: 0.4rem;
+  display: inline-block;
+  border: 1.5px solid blue;
+  border-radius: 4px;
+  margin: 0;
+}
+.liked-button i{
+  padding: 0;
+  margin: 0;
+}
+
 .book-show-info{
   display: inline-block;
   padding: 0 0 0 2rem;

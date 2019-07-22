@@ -17,7 +17,7 @@ class ClientHome extends Component{
       <div>
         <SubNavBar />
         <Switch>
-          <Route exact path="/" component={Books} />
+          <Route exact strict path="/" component={Books} />
           <Route path="/book/new/" component={BookNew} exact strict />
           <Route path="/book/edit/:id" component={BookEdit} exact strict />
           <Route path="/read/:id/" component={BookRead} exact />

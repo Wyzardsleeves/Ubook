@@ -64,7 +64,6 @@ class Books extends Component{
             </div>
             <div>
               <ul>
-                {/* A .map function will go here for the recently added books */}
                 {this.state.books.map((book) =>
                   <li key={book.id} className="book">
                     <div className="card-panel grey lighten-4">
@@ -92,6 +91,14 @@ class Books extends Component{
                   </li>
                 )}
               </ul>
+            </div>
+          </section>
+          <section>
+            <div>
+              <h3>Books that you Liked</h3>
+            </div>
+            <div>
+
             </div>
           </section>
         </div>

@@ -35,6 +35,20 @@ BookComment.create([
   {user_id: 2, book_id: 5, content: "Liked and subscribed!", votes: 7}
 ])
 
+BookLike.create([
+  {user_id: 1, book_id: 1},
+  {user_id: 2, book_id: 4},
+  {user_id: 1, book_id: 4},
+  {user_id: 1, book_id: 2},
+  {user_id: 2, book_id: 1},
+  {user_id: 1, book_id: 1},
+  {user_id: 3, book_id: 4},
+  {user_id: 1, book_id: 2},
+  {user_id: 2, book_id: 1},
+  {user_id: 2, book_id: 2},
+  {user_id: 1, book_id: 3}
+])
+
 Faq.create!([
   {question: "What is this site about?", answer: "This site is basically the Youtube of books!"},
   {question: "What formats can I upload?", answer: "At the moment we are only taking PDF's"},
@@ -56,6 +70,10 @@ end
 
 BookComment.all.each do |book|
   puts "#{book.content} made!"
+end
+
+BookLike.all.each do |book|
+  puts "Book #{book.id} made!"
 end
 
 Faq.all.each do |x|

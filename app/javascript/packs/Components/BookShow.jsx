@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 import { Document, Page } from 'react-pdf/dist/entry.webpack';
-import BookComments from './BookComments'
+import BookComments from './BookComments';
+import BookLikes from './BookLikes';
 
 class BookShow extends Component{
   constructor(props){
@@ -56,7 +57,6 @@ class BookShow extends Component{
     location.reload();
   }
 
-
   render(){
     const {pageNumber, numPages} = this.state;
     const bookIndex = this.props.match.params.id;
@@ -71,6 +71,7 @@ class BookShow extends Component{
               </Document>
             </section>
             <div className="book-show-info">
+              <BookLikes bookIndex={bookIndex} />
               <p>{numPages} total pages.</p>
               <NavLink to={`/read/${bookIndex}`}>
                 <p className="card blue lighten-1">START READING</p>

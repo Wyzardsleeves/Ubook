@@ -46,6 +46,7 @@ class BookNew extends Component{
             </div>
             <div>
               <form id="new-book-form" onSubmit={this.newBook}>
+                <p><i>PDF's only (must be less than 1mb)</i></p>
                 <input type="file" onChange={this.handleFile}/>
                 <input type="text" ref="title" placeholder="New Book Title" /><br/>
                 <input type="text" ref="description" placeholder="New Book Description" /><br/>

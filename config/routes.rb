@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :faqs
   resources :books do
     resources :book_comments
+    resources :book_likes
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
