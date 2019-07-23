@@ -3,7 +3,7 @@ class BookLikesController < ApplicationController
   def index
     @book = Book.find(params[:book_id])
     @book_likes = @book.book_likes
-    render json: @book_likes, status: :ok
+    render json: {data: @book_likes, user: current_user}
   end
 
   def create
@@ -21,7 +21,7 @@ class BookLikesController < ApplicationController
   end
 
   def destroy
-    @book_like = BookLike.where(user_id: current_user.id, book_id: params[:book_id])
+    @book_like = BookLike.find(params[:id])
     @book_like.destroy
     if @book_like.destroy
       render json: {success: "Like was successfully destroyed!"}

@@ -6,29 +6,22 @@ class BookLikes extends Component{
     super(props);
     this.state = {
       likes: [],
-      keepID: 0
+      user: 0
     }
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.getLikes();
-    console.log(this.state.likes);
   }
 
-  testButton = () => {
-    console.log(this.state.likes);
-  }
+  componentDidMount(){
 
-  getUser = () => {
-    axios.get('/users/check_for_user')
-    .then((response) => console.log(response.data))
-    .catch((error) => console.log(error.message));
   }
 
   getLikes = () => {
     axios.get(`/books/${this.props.bookIndex}/book_likes/`)
     .then((response) => {
-      this.setState({likes: response.data});
+      this.setState({likes: response.data.data, user: response.data.user});
       console.log(response.data)
     })
     .catch((error) => console.log(error.message))
@@ -41,24 +34,28 @@ class BookLikes extends Component{
     .catch((error) => console.log(error.message))
   }
 
-  unLike = (e, id) => {
+  unLike = (e) => {
     e.preventDefault();
-    axios.delete(`/books/${this.props.bookIndex}/book_likes/${id}`)
-    .then((response) => this.setState({keepID: response.data.id}))
+    let likes = this.state.likes;
+    let userId = this.state.user.id;
+    let bookIndex = this.props.bookIndex;
+    let like = likes.find((it) => it.user_id == userId && bookIndex == it.book_id)
+    axios.delete(`/books/${this.props.bookIndex}/book_likes/${like.id}`)
+    .then((response) => console.log(response.data))
     .catch((error) => console.log(error.message))
     //location.reload(); (might need this)
   }
 
   render(){
-    //let likeID = getIdFunc();
 
     return(
       <div>
-        {!this.state.likes.length &&
+        {!this.state.likes.find((x) => x.user_id == this.state.user.id) &&
           <h6 className="like-button blue lighten-2 white-text" onClick={this.makeLike}><i className="fas fa-thumbs-up"></i> Like</h6>
         }
-        {this.state.likes.length &&
-          <h6 className="liked-button blue-text" onClick={this.getUser}><i className="fas fa-thumbs-up"></i> Liked</h6>
+        {this.state.likes.find((x) => x.user_id == this.state.user.id) &&
+          <h6 className="liked-button blue-text" onClick={this.unLike}><i className="fas fa-thumbs-up"></i> Liked</h6>
+          /*<h6 className="liked-button blue-text" onClick={this.getLikeId}><i className="fas fa-thumbs-up"></i> Liked</h6>*/
         }
         <i>({this.state.likes.length} total Likes)</i>
       </div>
