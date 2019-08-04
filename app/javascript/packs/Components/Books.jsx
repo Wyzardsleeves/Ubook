@@ -22,7 +22,11 @@ class Books extends Component{
 
   getBooks = () => {
     axios.get('/books/')
-    .then((response) => this.setState({recentBooks: response.data}))
+    .then((response) => this.setState({
+      popularBooks: response.data.mostPopular,
+      recentBooks: response.data.recentBooks,
+      likedBooks: response.data.likedByUser
+    }))
     .catch((error) => alert(error.message))
   }
 
@@ -62,7 +66,34 @@ class Books extends Component{
               <h3>Most Popular</h3>
             </div>
             <div>
-
+              <ul>
+                {this.state.popularBooks.map((book) =>
+                  <li key={book.id} className="book">
+                    <div className="card-panel grey lighten-4">
+                      <Link to={`/book/${book.id}`}>
+                        <div className="book-thumb">
+                          <Document className="title-img" file={book.attachment} onLoadSuccess={this.onDocumentLoadSuccess}>
+                            <Page pageNumber={1} renderTextLayer={false} width={170} renderAnnotationLayer={false} />
+                          </Document>
+                        </div>
+                          <h5 title={book.title}>{this.cropLength(book.title, 15)}</h5>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div className="sub-part left"><i className="fas fa-comment"></i><p>{book.commentCount}</p></div>
+                                </td>
+                                <td>
+                                  <div className="sub-part right"><i className="fas fa-eye"></i><p>{"Num"}</p></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </Link>
+                    </div>
+                  </li>
+                )}
+              </ul>
             </div>
           </section>
           <section>
@@ -105,7 +136,34 @@ class Books extends Component{
               <h3>Books that you Liked</h3>
             </div>
             <div>
-
+              <ul>
+                {this.state.likedBooks.map((book) =>
+                  <li key={book.id} className="book">
+                    <div className="card-panel grey lighten-4">
+                      <Link to={`/book/${book.id}`}>
+                        <div className="book-thumb">
+                          <Document className="title-img" file={book.attachment} onLoadSuccess={this.onDocumentLoadSuccess}>
+                            <Page pageNumber={1} renderTextLayer={false} width={170} renderAnnotationLayer={false} />
+                          </Document>
+                        </div>
+                          <h5 title={book.title}>{this.cropLength(book.title, 15)}</h5>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div className="sub-part left"><i className="fas fa-comment"></i><p>{book.commentCount}</p></div>
+                                </td>
+                                <td>
+                                  <div className="sub-part right"><i className="fas fa-eye"></i><p>{"Num"}</p></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </Link>
+                    </div>
+                  </li>
+                )}
+              </ul>
             </div>
           </section>
         </div>
