@@ -67,7 +67,7 @@ class BookShow extends Component{
           <section className="card-panel grey lighten-4">
             <section className="book-show-image" ref="bookContain">
               <Document file={this.state.book.attachment} onLoadSuccess={this.onDocumentLoadSuccess}>
-                <Page pageNumber={1} renderTextLayer={false} width={this.state.widthIndex} />
+                <Page pageNumber={1} renderTextLayer={false} width={this.state.widthIndex} renderAnnotationLayer={false} />
               </Document>
             </section>
             <div className="book-show-info">

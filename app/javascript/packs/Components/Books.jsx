@@ -10,9 +10,9 @@ class Books extends Component{
   constructor(props){
     super(props);
     this.state = {
-      books: [],
-      shoes: 'Nike',
-      pets: 'Dogs'
+      recentBooks: [],
+      likedBooks: [],
+      popularBooks: []
     }
   }
 
@@ -22,7 +22,7 @@ class Books extends Component{
 
   getBooks = () => {
     axios.get('/books/')
-    .then((response) => this.setState({books: response.data}))
+    .then((response) => this.setState({recentBooks: response.data}))
     .catch((error) => alert(error.message))
   }
 
@@ -37,7 +37,6 @@ class Books extends Component{
   }
 
   destroyBook = (id, e) => {
-    console.log(id);
     axios.delete(`/books/${id}`)
     .then((response) => console.log(response.data))
     .catch((error) => console.log(error.message))
@@ -60,17 +59,25 @@ class Books extends Component{
         <div className="container">
           <section>
             <div>
+              <h3>Most Popular</h3>
+            </div>
+            <div>
+
+            </div>
+          </section>
+          <section>
+            <div>
               <h3>Recently Uploaded</h3>
             </div>
             <div>
               <ul>
-                {this.state.books.map((book) =>
+                {this.state.recentBooks.map((book) =>
                   <li key={book.id} className="book">
                     <div className="card-panel grey lighten-4">
                       <Link to={`/book/${book.id}`}>
                         <div className="book-thumb">
                           <Document className="title-img" file={book.attachment} onLoadSuccess={this.onDocumentLoadSuccess}>
-                            <Page pageNumber={1} renderTextLayer={false} width={170} />
+                            <Page pageNumber={1} renderTextLayer={false} width={170} renderAnnotationLayer={false} />
                           </Document>
                         </div>
                           <h5 title={book.title}>{this.cropLength(book.title, 15)}</h5>

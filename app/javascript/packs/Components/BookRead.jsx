@@ -96,14 +96,14 @@ class BookRead extends Component{
           <table>
             <tbody>
               <tr>
-                <td>
+                <td width="15%">
                   <div className="controls-left">
                     <i onClick={this.getPrevPage} className="fas fa-angle-left"></i>
-                    <i onClick={this.getFirstPage} className="fas fa-angle-double-left"></i>
                   </div>
                 </td>
-                <td>
+                <td width="50%">
                   <div className="controls-center">
+                    <i onClick={this.getFirstPage} className="fas fa-angle-double-left"></i>
                     <NavLink to={`/book/${this.props.match.params.id}/`}>
                       <i className="fas fa-book"></i>
                     </NavLink>
@@ -123,11 +123,11 @@ class BookRead extends Component{
                       </form>
                       <h5> of {numPages}</h5>
                     </div>
+                    <i onClick={this.getLastPage} className="fas fa-angle-double-right"></i>
                   </div>
                 </td>
-                <td>
+                <td width="15%">
                   <div className="controls-right right">
-                    <i onClick={this.getLastPage} className="fas fa-angle-double-right"></i>
                     <i onClick={this.getNextPage} className="fas fa-angle-right"></i>
                   </div>
                 </td>
@@ -153,11 +153,11 @@ class BookRead extends Component{
                 <td>
                   <div className="controls-left">
                     <i onClick={this.getPrevPage} className="fas fa-angle-left"></i>
-                    <i onClick={this.getFirstPage} className="fas fa-angle-double-left"></i>
                   </div>
                 </td>
                 <td>
                   <div className="controls-center">
+                    <i onClick={this.getFirstPage} className="fas fa-angle-double-left"></i>
                     <NavLink to={'/'}>
                       <i className="fas fa-home"></i>
                     </NavLink>
@@ -167,11 +167,11 @@ class BookRead extends Component{
                     <div className="page-change-bot">
                       <h5>Page {pageNumber} of {numPages}</h5>
                     </div>
+                    <i onClick={this.getLastPage} className="fas fa-angle-double-right"></i>
                   </div>
                 </td>
                 <td>
                   <div className="controls-right right">
-                    <i onClick={this.getLastPage} className="fas fa-angle-double-right"></i>
                     <i onClick={this.getNextPage} className="fas fa-angle-right"></i>
                   </div>
                 </td>

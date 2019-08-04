@@ -58,8 +58,9 @@
 }
 
 .controls-right{
-
+  
 }
+
 
 .page-change-form{
   padding: 0;
@@ -144,7 +145,6 @@
   padding: 0;
   margin: 0;
 }
-
 .like-button:hover{
   cursor: pointer;
   background-color: lightblue;
@@ -161,6 +161,10 @@
 .liked-button i{
   padding: 0;
   margin: 0;
+}
+.liked-button:hover{
+  cursor: pointer;
+  background-color: lightblue;
 }
 
 .book-show-info{
