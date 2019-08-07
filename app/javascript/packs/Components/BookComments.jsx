@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import BookShow from './BookShow';
+import BookCommentReplies from './BookCommentReplies';
 
 class BookComments extends Component{
   constructor(props){
@@ -17,8 +18,9 @@ class BookComments extends Component{
   getBookComments = () => {
     axios.get(`/books/${this.props.bookIndex}/book_comments/`)
     .then((response) => {
-      this.setState({book_comments: response.data});
-      console.log(response.data);
+      this.setState({
+        book_comments: response.data
+      });
     })
     .catch((error) => {console.log(error.message)})
   }
@@ -33,12 +35,29 @@ class BookComments extends Component{
     location.reload();
   }
 
+  postReply = (e, passedID) => {
+    e.preventDefault();
+    console.log(`postReply works! on ${passedID}`);
+    axios.post(`/books/${this.props.bookIndex}/book_comments/`, {
+      parent_id: passedID,
+      content: "this is a test reply 2222"
+    })
+    .then((response) => {console.log(response.data)})
+    .catch((error) => console.log(error.message));
+    location.reload();
+  }
+
   deleteComment = (e, id) => {
     console.log(id);
     axios.delete(`/books/${this.props.bookIndex}/book_comments/${id}`)
     .then((response) => console.log(response.data))
     .catch((error) => console.log(error.message));
     location.reload();
+  }
+
+  testButton = (e, id) => {
+    e.preventDefault();
+    console.log(`This is supposed to print out child number: ${id}`);
   }
 
   render(){
@@ -51,16 +70,28 @@ class BookComments extends Component{
         </form>
         {this.state.book_comments.length &&
           <ul>
-            {this.state.book_comments.map((bComments) =>
-              <li key={bComments.id}>
-                <section className="card book-comment">
-                  <div className="card-content ">
-                    <p className="left"><i>Posted by {bComments.user_id}</i> {bComments.content}</p>
-                    <p className="right">Votes: {bComments.votes}</p><br/>
-                    <input className="btn btn-small red lighten-2" type="button" value="Delete" onClick={(e) => this.deleteComment(e, bComments.id)} />
-                  </div>
-                </section>
-              </li>
+            {this.state.book_comments.map((bComment) =>
+              <div key={bComment.id} className="comment-grey">
+                <div>
+                  <li>
+                    <section className="card book-comment">
+                      <div className="card-content ">
+                        <p className="left"><i>Posted by {bComment.user_id}</i> {bComment.content}</p>
+                        <p className="right">Votes: {bComment.votes}</p><br/>
+                        <input className="btn btn-small blue lighten-2" type="button" value="Reply" onClick={(e) => this.postReply(e, bComment.id)} />
+                        <input className="btn btn-small red lighten-2" type="button" value="Delete" onClick={(e) => this.deleteComment(e, bComment.id)} />
+                      </div>
+                    </section>
+                  </li>
+                </div>
+                {bComment.children.length > 0 &&
+                  <BookCommentReplies
+                    children={bComment.children}
+                    replyButton={this.postReply}
+                    deleteButton={this.deleteComment}
+                  />
+                }
+              </div>
             )}
           </ul>
         }

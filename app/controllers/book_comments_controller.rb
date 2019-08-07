@@ -3,7 +3,7 @@ class BookCommentsController < ApplicationController
   def index
     @book = Book.find(params[:book_id])
     @book_comments = @book.book_comments
-    render json: @book_comments, status: :ok
+    render json: @book_comments.arrange_serializable, status: :ok
   end
 
   def create
@@ -39,6 +39,6 @@ class BookCommentsController < ApplicationController
 
   private
   def book_comment_params
-    params.permit(:content, :votes, :user_id, :book_id)
+    params.permit(:content, :votes, :user_id, :book_id, :parent_id)
   end
 end

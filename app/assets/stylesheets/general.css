@@ -58,7 +58,7 @@
 }
 
 .controls-right{
-  
+
 }
 
 
@@ -183,4 +183,20 @@
   margin: 0 0 0.7rem 0;
   padding: 0.5rem 5.4rem;
   display: inline-block;
+}
+
+.comment-grey{
+  border-left: rgba(220, 220, 220, 0.8) 1px solid;
+}
+.reply-indent{
+  border-left: rgba(220, 220, 220, 0.8) 1px solid;
+  margin-left: 2rem;
+}
+.reply-indent:first-child{
+  border-left: rgba(220, 220, 220, 0.8) 1px solid;
+  margin-left: 0;
+}
+.reply-indent .reply-indent .reply-indent .reply-indent .reply-indent .reply-indent {
+  border-left: none;
+  margin-left: 0;
 }

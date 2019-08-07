@@ -66,3 +66,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise' #rails g devise:views to add custom views
 gem 'pundit'
 gem 'webpacker', '~> 4.x'
+gem 'ancestry'
