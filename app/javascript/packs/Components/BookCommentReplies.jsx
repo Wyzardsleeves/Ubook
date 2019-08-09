@@ -14,7 +14,7 @@ const BookCommentReplies = (props) => (
             </div>
           </section>
         </li>
-        {reply.children.length > 0 &&
+        {reply.children &&
           <BookCommentReplies
             children={reply.children}
             replyButton={props.replyButton}

@@ -22,7 +22,9 @@ class BookComments extends Component{
         book_comments: response.data
       });
     })
-    .catch((error) => {console.log(error.message)})
+    .catch((error) => {
+      console.log(error.message)
+    })
   }
 
   postComment = (e) => {
@@ -40,7 +42,7 @@ class BookComments extends Component{
     console.log(`postReply works! on ${passedID}`);
     axios.post(`/books/${this.props.bookIndex}/book_comments/`, {
       parent_id: passedID,
-      content: "this is a test reply 2222"
+      content: `this is a test reply to ${passedID}`
     })
     .then((response) => {console.log(response.data)})
     .catch((error) => console.log(error.message));
@@ -55,17 +57,13 @@ class BookComments extends Component{
     location.reload();
   }
 
-  testButton = (e, id) => {
-    e.preventDefault();
-    console.log(`This is supposed to print out child number: ${id}`);
-  }
 
   render(){
     return(
       <div>
         <h4><i className="fas fa-comments"></i>{this.state.book_comments.length} Comment(s)</h4>
         <form onSubmit={this.postComment}>
-          <input type="text" placeholder="Type comment here..... " ref="commentField" />
+          <input type="text" placeholder={`Posting as ${this.props.user.username}`} ref="commentField" name="commentField" />
           <button type="submit" className="btn btn-small">Post Comment</button>
         </form>
         {this.state.book_comments.length &&

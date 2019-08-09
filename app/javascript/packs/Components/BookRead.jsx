@@ -22,7 +22,7 @@ class BookRead extends Component{
 
   componentDidMount(){
     let containWidth = this.refs.bookContain.clientWidth;
-    this.setState({widthIndex: containWidth}, console.log(this.state.widthIndex));
+    this.setState({widthIndex: containWidth});
   }
 
   onDocumentLoadSuccess = ({numPages}) => {
@@ -31,7 +31,7 @@ class BookRead extends Component{
 
   getBook = () => {
     axios.get(`/books/${this.props.match.params.id}`)
-    .then((response) => {this.setState({book: response.data}, console.log(response.data))})
+    .then((response) => {this.setState({book: response.data.bookInfo})})
     .catch((error) => {console.log(error.message)})
   }
 

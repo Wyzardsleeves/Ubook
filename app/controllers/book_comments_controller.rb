@@ -4,6 +4,8 @@ class BookCommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @book_comments = @book.book_comments
     render json: @book_comments.arrange_serializable, status: :ok
+
+    #render json: @book_comments.arrange_serializable.map{ |book_comments| book_comments.as_json.merge(username: book_comment.user_id)},
   end
 
   def create

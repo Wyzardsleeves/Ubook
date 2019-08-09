@@ -10,6 +10,7 @@ class BookShow extends Component{
     super(props);
     this.state = {
       book: {},
+      user: {},
       numPages: null,
       pageNumber: 1,
       widthIndex: null,
@@ -30,7 +31,10 @@ class BookShow extends Component{
 
   getBook = () => {
     axios.get(`/books/${this.props.match.params.id}`)
-    .then((response) => {this.setState({book: response.data}, console.log(response.data))})
+    .then((response) => this.setState({
+      book: response.data.bookInfo,
+      user: response.data.user
+    }))
     .catch((error) => {console.log(error.message)})
   }
 
@@ -49,6 +53,10 @@ class BookShow extends Component{
     }
   }
 
+  toPrint = () => {
+    console.log(this.state.user)
+  }
+
   destroyBook = () => {
     axios.delete(`/books/${this.props.match.params.id}`)
     .then((response) => console.log(response.data))
@@ -60,6 +68,7 @@ class BookShow extends Component{
   render(){
     const {pageNumber, numPages} = this.state;
     const bookIndex = this.props.match.params.id;
+
     return(
       <div className="show-book-comp">
         <div className="container">
@@ -81,7 +90,7 @@ class BookShow extends Component{
               <h5>{this.state.book.description}</h5>
             </div>
           </section>
-          <BookComments bookIndex={bookIndex} />
+          <BookComments bookIndex={bookIndex} user={this.state.user}/>
         </div>
       </div>
     )

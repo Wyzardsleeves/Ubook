@@ -29,7 +29,7 @@
               <li><%= link_to '<i class="fas fa-user-plus"></i>'.html_safe, new_user_registration_path, title:"Sign Up" %></li>
               <li><%= link_to '<i class="fas fa-sign-in-alt"></i>'.html_safe, new_user_session_path, title:"Log In" %></li>
             <% else %>
-              <li>Logged in as: <strong class="green-text text-darken-2"><%= current_user.email %></strong></li>
+              <li>Logged in as: <strong class="green-text text-darken-2"><%= current_user.username %></strong></li>
               <li><%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, destroy_user_session_path, method: :delete, title:"Log Out" %></li>
             <% end %>
             <li><%= link_to "FAQs", faqs_path %></li>

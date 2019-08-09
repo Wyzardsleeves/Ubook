@@ -12,7 +12,7 @@ class Books extends Component{
     this.state = {
       recentBooks: [],
       likedBooks: [],
-      popularBooks: []
+      popularBooks: [],
     }
   }
 
@@ -25,19 +25,9 @@ class Books extends Component{
     .then((response) => this.setState({
       popularBooks: response.data.mostPopular,
       recentBooks: response.data.recentBooks,
-      likedBooks: response.data.likedByUser
+      likedBooks: response.data.likedByUser,
     }))
     .catch((error) => alert(error.message))
-  }
-
-  newBook = (value) => {
-    axios.post('/books/', {
-      title: "This is a title from react!",
-      description: "This is a description from react!"
-    })
-    .then((response) => console.log(response.data))
-    .catch((error) => console.log(error.message))
-    window.location.reload();
   }
 
   destroyBook = (id, e) => {
