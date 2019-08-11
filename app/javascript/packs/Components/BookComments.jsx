@@ -8,12 +8,30 @@ class BookComments extends Component{
     super(props);
     this.state = {
       book_comments: [],
+      modalIsOpen: false
     }
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentWillMount(){
     this.getBookComments();
   }
+  //Modal Stuff
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+  //----------- end modal
 
   getBookComments = () => {
     axios.get(`/books/${this.props.bookIndex}/book_comments/`)
@@ -39,14 +57,35 @@ class BookComments extends Component{
 
   postReply = (e, passedID) => {
     e.preventDefault();
-    console.log(`postReply works! on ${passedID}`);
+    let expandInputVal = document.getElementById(`reply-input-show-${passedID}-val`);
+    let expandInputForm = document.getElementById(`reply-input-show-${passedID}-form`);
     axios.post(`/books/${this.props.bookIndex}/book_comments/`, {
       parent_id: passedID,
-      content: `this is a test reply to ${passedID}`
+      content: expandInputVal.value
     })
     .then((response) => {console.log(response.data)})
     .catch((error) => console.log(error.message));
+    expandInputForm.reset();
     location.reload();
+  }
+
+  newReply = (e, passedID) => {
+    e.preventDefault();
+    let expandInput = document.getElementById(`reply-input-show-${passedID}`);
+    let expandInputVal = document.getElementById(`reply-input-show-${passedID}-val`);
+    expandInput.style.display = "block";
+    expandInput.style.marginLeft = "2rem";
+    expandInputVal.focus();
+
+  }
+
+  cancelReply = (e, passedID) => {
+    e.preventDefault();
+    let expandInput = document.getElementById(`reply-input-show-${passedID}`);
+    let expandInputVal = document.getElementById(`reply-input-show-${passedID}-val`);
+    let expandInputForm = document.getElementById(`reply-input-show-${passedID}-form`);
+    expandInput.style.display = "none";
+    expandInputForm.reset();
   }
 
   deleteComment = (e, id) => {
@@ -76,8 +115,17 @@ class BookComments extends Component{
                       <div className="card-content ">
                         <p className="left"><i>Posted by {bComment.user_id}</i> {bComment.content}</p>
                         <p className="right">Votes: {bComment.votes}</p><br/>
-                        <input className="btn btn-small blue lighten-2" type="button" value="Reply" onClick={(e) => this.postReply(e, bComment.id)} />
+                        <input className="btn btn-small blue lighten-2" type="button" value="Reply" onClick={(e) => this.newReply(e, bComment.id)} />
                         <input className="btn btn-small red lighten-2" type="button" value="Delete" onClick={(e) => this.deleteComment(e, bComment.id)} />
+                      </div>
+                    </section>
+                    <section className="card reply-button" id={`reply-input-show-${bComment.id}`}>
+                      <div className="card-content ">
+                        <form id={`reply-input-show-${bComment.id}-form`}>
+                          <input type="text" id={`reply-input-show-${bComment.id}-val`} name={"replyInputField" + bComment.id} />
+                          <input className="btn btn-small blue lighten-2" type="button" value="Post Reply" onClick={(e) => this.postReply(e, bComment.id)} />
+                          <input className="btn btn-small red lighten-2" type="button" value="Cancel" onClick={(e) => this.cancelReply(e, bComment.id)} />
+                        </form>
                       </div>
                     </section>
                   </li>
@@ -87,6 +135,8 @@ class BookComments extends Component{
                     children={bComment.children}
                     replyButton={this.postReply}
                     deleteButton={this.deleteComment}
+                    newReply={this.newReply}
+                    cancelReply={this.cancelReply}
                   />
                 }
               </div>

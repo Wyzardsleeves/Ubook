@@ -8,6 +8,12 @@ import PropTypes from 'prop-types'
 import ClientHome from './Components/ClientHome'
 import {HashRouter} from 'react-router-dom'
 
+//Beginning of modal
+import Modal from 'react-modal';
+
+Modal.setAppElement(document.body);
+//End of modal
+
 const Hello = props => (
   <div className="container">Hello {props.name}!</div>
 )
