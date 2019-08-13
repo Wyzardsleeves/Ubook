@@ -57,6 +57,12 @@ class BookComments extends Component{
 
   postReply = (e, passedID) => {
     e.preventDefault();
+    $(window).keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+      }
+    });
     let expandInputVal = document.getElementById(`reply-input-show-${passedID}-val`);
     let expandInputForm = document.getElementById(`reply-input-show-${passedID}-form`);
     axios.post(`/books/${this.props.bookIndex}/book_comments/`, {
@@ -100,12 +106,12 @@ class BookComments extends Component{
   render(){
     return(
       <div>
-        <h4><i className="fas fa-comments"></i>{this.state.book_comments.length} Comment(s)</h4>
+        <h4><i className="fas fa-comments"></i>{this.props.commentCount} Comment(s)</h4>
         <form onSubmit={this.postComment}>
           <input type="text" placeholder={`Posting as ${this.props.user.username}`} ref="commentField" name="commentField" />
           <button type="submit" className="btn btn-small">Post Comment</button>
         </form>
-        {this.state.book_comments.length &&
+        {this.state.book_comments.length > 0 &&
           <ul>
             {this.state.book_comments.map((bComment) =>
               <div key={bComment.id} className="comment-grey">
@@ -113,17 +119,17 @@ class BookComments extends Component{
                   <li>
                     <section className="card book-comment">
                       <div className="card-content ">
-                        <p className="left"><i>Posted by {bComment.user_id}</i> {bComment.content}</p>
+                        <p className="left"><i>Posted by {bComment.creator}</i> {bComment.content}</p>
                         <p className="right">Votes: {bComment.votes}</p><br/>
-                        <input className="btn btn-small blue lighten-2" type="button" value="Reply" onClick={(e) => this.newReply(e, bComment.id)} />
+                        <input className="btn btn-small blue lighten-2" type="button" value="Reply" onClick={(e) => this.newReply(e, bComment.id)} style={{marginRight: "8px"}} />
                         <input className="btn btn-small red lighten-2" type="button" value="Delete" onClick={(e) => this.deleteComment(e, bComment.id)} />
                       </div>
                     </section>
                     <section className="card reply-button" id={`reply-input-show-${bComment.id}`}>
                       <div className="card-content ">
-                        <form id={`reply-input-show-${bComment.id}-form`}>
-                          <input type="text" id={`reply-input-show-${bComment.id}-val`} name={"replyInputField" + bComment.id} />
-                          <input className="btn btn-small blue lighten-2" type="button" value="Post Reply" onClick={(e) => this.postReply(e, bComment.id)} />
+                        <form id={`reply-input-show-${bComment.id}-form`} onSubmit={(e) => this.postReply(e, bComment.id)}>
+                          <input type="text" id={`reply-input-show-${bComment.id}-val`} name={"replyInputField" + bComment.id} defaultValue={`@${bComment.creator} `}/>
+                          <input className="btn btn-small blue lighten-2" type="button" value="Post Reply" onClick={(e) => this.postReply(e, bComment.id)} style={{marginRight: "8px"}}/>
                           <input className="btn btn-small red lighten-2" type="button" value="Cancel" onClick={(e) => this.cancelReply(e, bComment.id)} />
                         </form>
                       </div>

@@ -11,6 +11,7 @@ class BookShow extends Component{
     this.state = {
       book: {},
       user: {},
+      commentCount: null,
       numPages: null,
       pageNumber: 1,
       widthIndex: null,
@@ -33,7 +34,8 @@ class BookShow extends Component{
     axios.get(`/books/${this.props.match.params.id}`)
     .then((response) => this.setState({
       book: response.data.bookInfo,
-      user: response.data.user
+      user: response.data.user,
+      commentCount: response.data.commentCount
     }))
     .catch((error) => {console.log(error.message)})
   }
@@ -90,7 +92,10 @@ class BookShow extends Component{
               <h5>{this.state.book.description}</h5>
             </div>
           </section>
-          <BookComments bookIndex={bookIndex} user={this.state.user}/>
+          <BookComments
+            bookIndex={bookIndex}
+            user={this.state.user}
+            commentCount={this.state.commentCount} />
         </div>
       </div>
     )

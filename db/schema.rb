@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_07_234906) do
+ActiveRecord::Schema.define(version: 2019_08_13_005039) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_234906) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.string "creator"
     t.index ["book_id"], name: "index_book_comments_on_book_id"
     t.index ["user_id"], name: "index_book_comments_on_user_id"
   end

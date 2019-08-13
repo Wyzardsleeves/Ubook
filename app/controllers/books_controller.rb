@@ -4,7 +4,11 @@ class BooksController < ApplicationController
     @books = Book.all
     @books_recent = @books.reverse[0..9]
     @books_popular = @books.sort_by{|book| book.book_likes.count}.reverse()[0..9]
-    @books_liked_by_user = @books.joins(:book_likes).where(:book_likes => {:user_id => current_user.id})[0..9].reverse()
+    if current_user.present?
+      @books_liked_by_user = @books.joins(:book_likes).where(:book_likes => {:user_id => current_user.id})[0..9].reverse()
+    else
+      @books_liked_by_user = []
+    end
     render json: {
       recentBooks: @books_recent.map{ |book| book.as_json.merge(attachment: url_for(book.document), commentCount: book.book_comments.count, likeCount: book.book_likes.count)},
       mostPopular: @books_popular.map{ |book| book.as_json.merge(attachment: url_for(book.document), commentCount: book.book_comments.count, likeCount: book.book_likes.count)},
@@ -14,7 +18,12 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    render json: {bookInfo: @book.as_json.merge(attachment: url_for(@book.document)), user: current_user}
+    if current_user.present?
+      userData = current_user
+    else
+      userData = {}
+    end
+    render json: {bookInfo: @book.as_json.merge(attachment: url_for(@book.document)), user: userData, commentCount: @book.book_comments.count}
   end
 
   def create
