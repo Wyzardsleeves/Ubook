@@ -74,7 +74,7 @@ class Books extends Component{
                                   <div className="sub-part left"><i className="fas fa-comment"></i><p>{book.commentCount}</p></div>
                                 </td>
                                 <td>
-                                  <div className="sub-part right"><i className="fas fa-eye"></i><p>{"Num"}</p></div>
+                                  <div className="sub-part right"><i className="fas fa-thumbs-up"></i><p>{book.likeCount}</p></div>
                                 </td>
                               </tr>
                             </tbody>
@@ -109,7 +109,7 @@ class Books extends Component{
                                   <div className="sub-part left"><i className="fas fa-comment"></i><p>{book.commentCount}</p></div>
                                 </td>
                                 <td>
-                                  <div className="sub-part right"><i className="fas fa-eye"></i><p>{"Num"}</p></div>
+                                  <div className="sub-part right"><i className="fas fa-thumbs-up"></i><p>{book.likeCount}</p></div>
                                 </td>
                               </tr>
                             </tbody>
@@ -144,7 +144,7 @@ class Books extends Component{
                                   <div className="sub-part left"><i className="fas fa-comment"></i><p>{book.commentCount}</p></div>
                                 </td>
                                 <td>
-                                  <div className="sub-part right"><i className="fas fa-eye"></i><p>{"Num"}</p></div>
+                                  <div className="sub-part right"><i className="fas fa-thumbs-up"></i><p>{book.likeCount}</p></div>
                                 </td>
                               </tr>
                             </tbody>

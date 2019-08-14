@@ -14,8 +14,6 @@ class BookEdit extends Component{
   }
 
   componentWillMount(){
-    //Code might go here later
-    console.log(this.props.match.params.id);
     this.getBook();
   }
 
@@ -25,7 +23,7 @@ class BookEdit extends Component{
 
   getBook = () => {
     axios.get(`/books/${this.props.match.params.id}`)
-    .then((response) => {this.setState({editTitle: response.data.title, editDescription: response.data.description})})
+    .then((response) => {this.setState({editTitle: response.data.bookInfo.title, editDescription: response.data.bookInfo.description})})
     .catch((error) => {console.log(error.message)})
   }
 
