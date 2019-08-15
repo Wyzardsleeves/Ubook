@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: {sessions: 'users/sessions'}
+  resources :users
   resources :faqs
+  resources :accounts
   resources :books do
     resources :book_comments
     resources :book_likes
