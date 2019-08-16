@@ -18,12 +18,13 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @creator = User.find_by(params[:book_user_id])
     if current_user.present?
       userData = current_user
     else
       userData = {}
     end
-    render json: {bookInfo: @book.as_json.merge(attachment: url_for(@book.document)), user: userData, commentCount: @book.book_comments.count}
+    render json: {bookInfo: @book.as_json.merge(attachment: url_for(@book.document), creator: @creator.username), user: userData, commentCount: @book.book_comments.count}
   end
 
   def create

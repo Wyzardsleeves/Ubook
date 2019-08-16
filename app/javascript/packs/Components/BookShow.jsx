@@ -70,7 +70,7 @@ class BookShow extends Component{
   render(){
     const {pageNumber, numPages} = this.state;
     const bookIndex = this.props.match.params.id;
-
+    console.log(this.state.book);
     return(
       <div className="show-book-comp">
         <div className="container">
@@ -83,7 +83,9 @@ class BookShow extends Component{
             </section>
             <div className="book-show-info">
               <BookLikes bookIndex={bookIndex} />
-              <p>{numPages} total pages.</p>
+              <div>
+                <p>Uploaded by <strong><NavLink to={`/user/${this.state.book.user_id}/books`}>{this.state.book.creator}</NavLink></strong> with {numPages} pages.</p>
+              </div>
               <NavLink to={`/read/${bookIndex}`}>
                 <p className="card blue lighten-1">START READING</p>
               </NavLink><br/>

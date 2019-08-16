@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import BookShow from './BookShow';
 import BookCommentReplies from './BookCommentReplies';
+import {NavLink} from 'react-router-dom';
 
 class BookComments extends Component{
   constructor(props){
@@ -119,7 +120,7 @@ class BookComments extends Component{
                   <li>
                     <section className="card book-comment">
                       <div className="card-content ">
-                        <p className="left"><i>Posted by {bComment.creator}</i> {bComment.content}</p>
+                        <p className="left"><i>Posted by <NavLink to={`/user/${bComment.user_id}/books`}>{bComment.creator}</NavLink></i>{bComment.content}</p>
                         <p className="right">Votes: {bComment.votes}</p><br/>
                         <input className="btn btn-small blue lighten-2" type="button" value="Reply" onClick={(e) => this.newReply(e, bComment.id)} style={{marginRight: "8px"}} />
                         <input className="btn btn-small red lighten-2" type="button" value="Delete" onClick={(e) => this.deleteComment(e, bComment.id)} />

@@ -13,6 +13,9 @@ const SubNavBar = (props) => (
         <NavLink to="/book/new/">
           <i className="fas fa-plus"></i>
         </NavLink>
+        <NavLink to="/user/2/comments/">
+          <i className="fas fa-user"></i>
+        </NavLink>
       </div>
     </div>
   </div>

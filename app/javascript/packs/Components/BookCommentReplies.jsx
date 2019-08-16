@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 const BookCommentReplies = (props) => (
   <div className="reply-indent" >
@@ -7,7 +8,7 @@ const BookCommentReplies = (props) => (
         <li>
           <section className="card book-comment">
             <div className="card-content ">
-              <p className="left"><i>Posted by {reply.creator}</i> {reply.content}</p>
+              <p className="left"><i>Posted by <NavLink to={`/user/${reply.user_id}/books`}>{reply.creator}</NavLink></i> {reply.content}</p>
               <p className="right">Votes: {reply.votes}</p><br/>
               <input className="btn btn-small blue lighten-2" type="button" value="Reply" onClick={(e) => props.newReply(e, reply.id)} style={{marginRight: "8px"}} />
               <input className="btn btn-small red lighten-2" type="button" value="Delete" onClick={(e) => props.deleteButton(e, reply.id)} />

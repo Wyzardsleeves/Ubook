@@ -10,11 +10,15 @@ const User = ({match}) => {
         <h3>User Details</h3>
       </div>
       <div>
-        <Route path={match.url + "/books/:id"} component={UserBooks} />
-        <Route path={match.url + "/comments/:id"} component={UserComments} />
+        <Route path={match.url + "/:id/books"} component={UserBooks} />
+        <Route path={match.url + "/:id/comments"} component={UserComments} />
       </div>
     </div>
   )
 }
 
 export default User;
+
+/*
+
+*/
