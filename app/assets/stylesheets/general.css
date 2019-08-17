@@ -171,10 +171,14 @@
 }
 
 .book-show-info a{
+  color: blue;
+}
+
+.book-show-info .button a{
   color: white;
 }
 
-.book-show-info a p{
+.book-show-info .button a p{
   font-size: 1rem;
   margin: 0 0 0.7rem 0;
   padding: 0.5rem 5.4rem;

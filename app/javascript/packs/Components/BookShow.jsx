@@ -41,7 +41,7 @@ class BookShow extends Component{
   }
 
   goToEdit = () => {
-    this.props.history.push(`/book/edit/${this.props.match.params.id}`);
+    this.props.history.push(`/book/${this.props.match.params.id}/edit`);
   }
 
   getImageWidth = () => {
@@ -70,7 +70,6 @@ class BookShow extends Component{
   render(){
     const {pageNumber, numPages} = this.state;
     const bookIndex = this.props.match.params.id;
-    console.log(this.state.book);
     return(
       <div className="show-book-comp">
         <div className="container">
@@ -86,9 +85,11 @@ class BookShow extends Component{
               <div>
                 <p>Uploaded by <strong><NavLink to={`/user/${this.state.book.user_id}/books`}>{this.state.book.creator}</NavLink></strong> with {numPages} pages.</p>
               </div>
-              <NavLink to={`/read/${bookIndex}`}>
-                <p className="card blue lighten-1">START READING</p>
-              </NavLink><br/>
+              <div className="button">
+                <NavLink to={`/read/${bookIndex}`}>
+                  <p className="card blue lighten-1">START READING</p>
+                </NavLink><br/>
+              </div>
               <button className="btn orange lighten-2" onClick={this.goToEdit} style={{marginRight: "10px"}}>Update Book</button>
               <button className="btn red lighten-2" onClick={this.destroyConfirm}>Delete Book</button>
               <h5>{this.state.book.description}</h5>

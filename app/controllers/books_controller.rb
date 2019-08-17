@@ -18,7 +18,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @creator = User.find_by(params[:book_user_id])
+    @creator = User.find_by_id(@book.user_id)
     if current_user.present?
       userData = current_user
     else
