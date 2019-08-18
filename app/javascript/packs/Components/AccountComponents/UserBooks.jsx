@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React from 'react';
 
 const UserBooks = (props) => {
   return(
     <div>
-      <div>
-        <h4>User's Uploaded Books</h4>
+      <div className="user-sub-head">
+        <h4><i className="fas fa-book"></i>{props.user_data.username}'s Uploaded Books</h4>
       </div>
       <div>
         {props.user_books.length > 0 &&

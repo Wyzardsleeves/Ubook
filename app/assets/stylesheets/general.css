@@ -20,11 +20,34 @@
 }
 
 .sub-nav-bar .sec-1{
-
+  display:inline-block;
+  float: left;
+}
+.sub-nav-bar .sec-1 a{
+  padding-right: 1rem;
+}
+.sub-nav-bar .sec-1 i{
+  padding-right: 0.4rem;
+}
+.sub-nav-bar .sec-1 i, .sub-nav-bar .sec-1 h5{
+  display: inline-block;
+  margin: 0;
 }
 
-.sub-nav-bar .sec-2{
 
+.sub-nav-bar .sec-2{
+  display:inline-block;
+  float: right;
+}
+.sub-nav-bar .sec-2 a{
+  padding-left: 1rem;
+}
+.sub-nav-bar .sec-2 i{
+  padding-right: 0.4rem;
+}
+.sub-nav-bar .sec-2 i, .sub-nav-bar .sec-2 h5{
+  display: inline-block;
+  margin: 0;
 }
 
 .react-pdf__Page__canvas{
@@ -203,4 +226,18 @@
 
 .reply-button{
   display: none;
+}
+
+.user-page li{
+  display: inline-block;
+  padding-right: 1rem;
+}
+.user-page a, .user-page a h5{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.user-sub-head i{
+  padding-right: 1rem;
 }

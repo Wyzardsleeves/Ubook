@@ -43,3 +43,12 @@ html{
     }
   }
 }
+
+html a{
+  color: rgb(80, 80, 80);
+}
+a:hover{
+  -webkit-transition: color 0.15s; /* Safari prior 6.1 */
+  transition: color 0.15s;
+  color: orange;
+}
