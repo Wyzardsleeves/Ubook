@@ -12,6 +12,8 @@
     "react": "^16.8.6",
     "react-activestorage-provider": "^0.8.0",
     "react-dom": "^16.8.6",
+    "react-dropdown": "^1.6.4",
+    "react-dropdown-select": "^3.3.4",
     "react-modal": "^3.9.1",
     "react-pdf": "^4.0.5",
     "react-router-dom": "^5.0.0",
