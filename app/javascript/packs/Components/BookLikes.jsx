@@ -44,8 +44,6 @@ class BookLikes extends Component{
     alert("Must be logged in to like a book!");
   }
 
-
-
   render(){
     let likes = this.state.likes;
 
@@ -61,7 +59,7 @@ class BookLikes extends Component{
     )
 
     return(
-      <div>
+      <div className="like-btns">
         {this.state.user &&
           <LikesSec />
         }

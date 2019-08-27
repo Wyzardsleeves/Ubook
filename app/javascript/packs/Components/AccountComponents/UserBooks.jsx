@@ -12,6 +12,7 @@ const UserBooks = (props) => {
             {props.user_books.map((book) =>
               <li key={book.id}>
                 <h5>{book.title}</h5>
+                <p>{book.description}</p>
               </li>
             )}
           </ul>

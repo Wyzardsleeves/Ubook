@@ -12,6 +12,11 @@ class SubNavBar extends Component{
 
   componentWillMount(){
     this.getCurrentUser();
+    this.checkForNotifications();
+  }
+
+  checkForNotifications = () => {
+    console.log("Notification time!");
   }
 
   getCurrentUser = () => {
@@ -22,22 +27,26 @@ class SubNavBar extends Component{
 
   render(){
     return(
-      <div className="sub-nav-bar">
-        <div className="container">
-          <div className="sec-1 ">
-            <NavLink to="/">
-              <i className="fas fa-home"></i><h5>Home</h5>
-            </NavLink>
+      <div>
+        {this.state.current_user &&
+          <div className="sub-nav-bar">
+            <div className="container">
+              <div className="sec-1 ">
+                <NavLink to="/">
+                  <i className="fas fa-home"></i><h5>Home</h5>
+                </NavLink>
+              </div>
+              <div className="sec-2 ">
+                  <NavLink to="/book/new/">
+                    <i className="fas fa-plus"></i><h5>New Book</h5>
+                  </NavLink>
+                  <NavLink to={`/user/${this.state.current_user.id}/books/`}>
+                    <i className="fas fa-user"></i><h5>{this.state.current_user.username}</h5>
+                  </NavLink>
+              </div>
+            </div>
           </div>
-          <div className="sec-2 ">
-            <NavLink to="/book/new/">
-              <i className="fas fa-plus"></i><h5>New Book</h5>
-            </NavLink>
-            <NavLink to={`/user/${this.state.current_user.id}/books/`}>
-              <i className="fas fa-user"></i><h5>{this.state.current_user.username}</h5>
-            </NavLink>
-          </div>
-        </div>
+        }
       </div>
     )
   }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import BookComments from './BookComments';
 import BookLikes from './BookLikes';
+import BookPublished from './BookPublished';
 
 class BookShow extends Component{
   constructor(props){
@@ -20,10 +21,15 @@ class BookShow extends Component{
 
   componentWillMount(){
     this.getBook();
+    this.checkForNotifications();
   }
 
   componentDidMount(){
     this.getImageWidth();
+  }
+
+  checkForNotifications = () => {
+    console.log("Checking notifications from BookShow!");
   }
 
   onDocumentLoadSuccess = ({numPages}) => {
@@ -35,7 +41,7 @@ class BookShow extends Component{
     .then((response) => this.setState({
       book: response.data.bookInfo,
       user: response.data.user,
-      commentCount: response.data.commentCount
+      commentCount: response.data.commentCount,
     }))
     .catch((error) => {console.log(error.message)})
   }
@@ -55,8 +61,27 @@ class BookShow extends Component{
     }
   }
 
-  toPrint = () => {
-    console.log(this.state.user)
+  publishedFunc = () => {
+    console.log('This is a print out from the BooksShow Component');
+    let published = this.state.book.published;
+    if(published){
+      axios.put(`/books/${this.props.match.params.id}`,{
+        published: 0
+      })
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error.message))
+      alert("Are you sure you want to mark this book as 'Unlisted'?")
+    }
+    else{
+      axios.put(`/books/${this.props.match.params.id}`,{
+        published: 1
+      })
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error.message))
+      alert("Are you sure you want to set this book as 'Published'?")
+    }
+    location.reload();
+    //this.props.history.push(`/book/${this.props.match.params.id}`)
   }
 
   destroyBook = () => {
@@ -82,6 +107,10 @@ class BookShow extends Component{
             </section>
             <div className="book-show-info">
               <BookLikes bookIndex={bookIndex} />
+              <BookPublished
+                publish_stat={this.state.book.published}
+                publishedFunc={this.publishedFunc}
+              />
               <div>
                 <p>Uploaded by <strong><NavLink to={`/user/${this.state.book.user_id}/books`}>{this.state.book.creator}</NavLink></strong> with {numPages} pages.</p>
               </div>

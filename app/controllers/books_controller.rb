@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
+    @books = Book.where(published: true)
     @books_recent = @books.reverse[0..9]
     @books_popular = @books.sort_by{|book| book.book_likes.count}.reverse()[0..9]
     if current_user.present?
@@ -57,8 +57,16 @@ class BooksController < ApplicationController
     end
   end
 
+  def search
+    #Search for books
+    @books = Book.where("title LIKE ?", "%" + params[:b] + "%")
+    render json: @books
+
+    #Search for users
+  end
+
   private
   def book_params
-    params.require(:book).permit(:title, :description, :user_id, :document)
+    params.require(:book).permit(:title, :description, :user_id, :published, :document)
   end
 end

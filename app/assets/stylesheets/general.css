@@ -153,6 +153,11 @@
 
 }
 
+/* Like Button */
+.like-btns{
+  display:inline-block;
+  margin: 0 0.5rem 0 0;
+}
 .like-button{
   padding: 0.5rem;
   display: inline-block;
@@ -185,6 +190,45 @@
   cursor: pointer;
   background-color: lightblue;
 }
+/* ------------------- */
+
+/* Published button */
+.pub-btns{
+  display:inline-block;
+  margin: 0 0.5rem 0 0;
+}
+.unlist-button{
+  padding: 0.5rem;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 0;
+}
+.unlist-button i{
+  padding: 0;
+  margin: 0;
+}
+.unlist-button:hover{
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+
+.publish-button{
+  padding: 0.4rem;
+  display: inline-block;
+  border: 1.5px solid green;
+  border-radius: 4px;
+  margin: 0;
+}
+.publish-button i{
+  padding: 0;
+  margin: 0;
+}
+.publish-button:hover{
+  cursor: pointer;
+  background-color: lightblue;
+}
+/* ------------------ */
 
 .book-show-info{
   display: inline-block;
@@ -237,7 +281,6 @@
   padding: 0;
   margin: 0;
 }
-
-.user-sub-head i{
+.user-head i, .user-sub-head i{
   padding-right: 1rem;
 }

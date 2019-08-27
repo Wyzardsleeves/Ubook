@@ -10,7 +10,7 @@ const UserComments = (props) => {
         <ul>
           {props.user_comments.map((comment) =>
             <li key={comment.id}>
-              <h5>{comment.content}</h5>
+              <h6>{comment.content}</h6>
             </li>
           )}
         </ul>

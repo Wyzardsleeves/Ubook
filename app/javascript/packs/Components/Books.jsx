@@ -13,12 +13,20 @@ class Books extends Component{
       recentBooks: [],
       likedBooks: [],
       popularBooks: [],
+      searchBook: '',
+      searchResults: []
     }
   }
 
   componentWillMount(){
     this.getBooks();
+    this.checkForNotifications();
   }
+
+  checkForNotifications = () => {
+    console.log("This is a hypothetical notification!");
+  }
+
 
   getBooks = () => {
     axios.get('/books/')
@@ -47,10 +55,42 @@ class Books extends Component{
     }
   }
 
+  searchBook = () => {
+    axios.get(`/search?b=${this.refs.searchBook.value}`)
+    .then((response) => this.setState({
+      searchBook: this.refs.searchBook.value,
+      searchResults: response.data
+    }))
+    .catch((error) => alert(error.message))
+  }
+
   render(){
     return(
       <section className="books-comp">
         <div className="container">
+          <section>
+            <div>
+              <form onChange={this.searchBook} action={`/search`}>
+                <input type="text" ref="searchBook" placeholder="Search by Title" />
+              </form>
+            </div>
+            {this.state.searchBook &&
+              <div>
+                <h3>Showing results for "{this.state.searchBook}"</h3>
+                <ul>
+                  {this.state.searchResults.map((book) =>
+                    <li key={book.id}>
+                      <h5>{book.title}</h5>
+                      <p>{book.description}</p>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            }
+            {this.state.searchResults.length < 1 && this.state.searchBook &&
+              <h5>No results to show......</h5>
+            }
+          </section>
           <section>
             <div>
               <h3>Most Popular</h3>

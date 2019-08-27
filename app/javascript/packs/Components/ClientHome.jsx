@@ -7,7 +7,6 @@ import BookNew from './BookNew';
 import SubNavBar from './SubNavBar';
 import BookRead from './BookRead';
 import User from './AccountComponents/User';
-import axios from 'axios';
 
 //router
 import {Switch, Route} from 'react-router-dom'

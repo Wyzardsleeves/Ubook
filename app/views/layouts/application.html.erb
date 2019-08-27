@@ -26,13 +26,11 @@
           <ul>
             <!-- <li><i class="fas fa-toggle-on"></i></li> -->
             <% unless current_user %>
-              <li><%= link_to '<i class="fas fa-user-plus"></i>'.html_safe, new_user_registration_path, title:"Sign Up" %></li>
-              <li><%= link_to '<i class="fas fa-sign-in-alt"></i>'.html_safe, new_user_session_path, title:"Log In" %></li>
+              <li><%= link_to '<i class="fas fa-sign-in-alt"></i><h5>Sign In</h5>'.html_safe, new_user_session_path, title:"Log In" %></li>
+              <li><%= link_to '<i class="fas fa-user-plus"></i><h5>Sign Up</h5>'.html_safe, new_user_registration_path, title:"Sign Up" %></li>
             <% else %>
-              <li>Logged in as: <strong class="green-text text-darken-2"><%= current_user.username %></strong></li>
-              <li><%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, destroy_user_session_path, method: :delete, title:"Log Out" %></li>
+              <li><%= link_to '<i class="fas fa-sign-out-alt"></i><h5>Sign Out</h5>'.html_safe, destroy_user_session_path, method: :delete, title:"Log Out" %></li>
             <% end %>
-            <li><%= link_to "FAQs", faqs_path %></li>
           </ul>
         </div>
       </section>

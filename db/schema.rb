@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_18_203813) do
+ActiveRecord::Schema.define(version: 2019_08_25_165942) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,14 +55,8 @@ ActiveRecord::Schema.define(version: 2019_08_18_203813) do
     t.index ["user_id"], name: "index_book_likes_on_user_id"
   end
 
-  create_table "books", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_books_on_user_id"
-  end
+# Could not dump table "books" because of following StandardError
+#   Unknown type 'bool' for column 'published'
 
   create_table "faqs", force: :cascade do |t|
     t.string "question"

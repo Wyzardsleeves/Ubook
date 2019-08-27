@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :book_likes
   end
 
+  resources "search", to:"books#search"
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "application#index"
