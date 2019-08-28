@@ -22,7 +22,7 @@ const UserLikedBooks = (props) => {
           </ul>
         }
         {props.user_liked_books.length == 0 &&
-          <h5><i>No books have been uploaded by this user yet.....</i></h5>
+          <h5><i>This User hasn't liked any books yet.....</i></h5>
         }
       </div>
     </div>

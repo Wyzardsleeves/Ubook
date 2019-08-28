@@ -289,6 +289,7 @@
 .search-bar{
   width: 80%;
   margin: 0 auto;
+  text-align: center;
 }
 .search-type{
   width: 10%;
@@ -305,3 +306,29 @@
 }
 
 /* ---------- ----------- */
+
+.main-book-content{
+  margin: 0 auto;
+}
+
+/* -------- User stuff -----*/
+.user-card{
+  width: 48%;
+  margin: 0 1%;
+  display: inline-block;
+}
+.user-image{
+  display: inline-block;
+  width: 28%;
+  margin-right: 2%;
+}
+.user-image img{
+  width: 100%;
+}
+.user-content{
+  vertical-align: top;
+  display: inline-block;
+  width: 68%;
+  margin-left: 2%;
+}
+/* -------------------------*/

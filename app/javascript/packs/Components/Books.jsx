@@ -6,6 +6,7 @@ import SubNavBar from './SubNavBar';
 import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import userIcon from './assets/images/template.png';
 
 class Books extends Component{
   constructor(props){
@@ -51,7 +52,7 @@ class Books extends Component{
 
   cropLength = (words, num) => {
     let newWords = '';
-    if(words.length > num){
+    if(words && words.length > num){
       newWords = words.slice(0, num) + "...";
       return newWords;
     }else{
@@ -154,20 +155,29 @@ class Books extends Component{
                 <h3>Showing User results for "{this.state.searchText}"</h3>
                 <ul>
                   {this.state.searchResults.map((user) =>
-                    <li key={user.id}>
-                      <h5>{user.username}</h5>
-                      <p>{user.bio}</p>
+                    <li key={user.id} className="user-card">
+                      <Link to={`/user/${user.id}/books/`}>
+                        <div className="card-panel">
+                          <div className="user-image">
+                            <img src={userIcon} />
+                          </div>
+                          <div className="user-content">
+                            <h5>{user.username}</h5>
+                            <p>{user.bio}</p>
+                          </div>
+                        </div>
+                      </Link>
                     </li>
                   )}
                 </ul>
               </div>
             }
-            {this.state.searchResults.length < 1 && this.state.searchText &&
+            {this.state.searchResults.length == 0 && this.state.searchText &&
               <h5>No results to show......</h5>
             }
           </div>
           {!this.state.searchText &&
-            <div>
+          <div>
             <section>
               <div>
                 <h3>Most Popular</h3>
