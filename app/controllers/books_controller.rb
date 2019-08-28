@@ -58,11 +58,13 @@ class BooksController < ApplicationController
   end
 
   def search
-    #Search for books
-    @books = Book.where("title LIKE ?", "%" + params[:b] + "%")
-    render json: @books
-
-    #Search for users
+    if(params[:b])
+      @books = Book.where("title LIKE ?", "%" + params[:b] + "%")
+      render json: @books.map{ |book| book.as_json.merge(attachment: url_for(book.document), commentCount: book.book_comments.count, likeCount: book.book_likes.count)}
+    elsif(params[:u])
+      @users = User.where("username LIKE ?", "%" + params[:u] + "%")
+      render json: @users
+    end
   end
 
   private

@@ -14,10 +14,11 @@ class Books extends Component{
       recentBooks: [],
       likedBooks: [],
       popularBooks: [],
-      searchBook: '',
+      searchText: '',
       searchResults: [],
       toggleSearch: 'b',
-      searchType: ''
+      searchType: '',
+      keepDefault: 'Book'
     }
   }
 
@@ -58,37 +59,39 @@ class Books extends Component{
     }
   }
 
-  searchBook = () => {
-    axios.get(`/search?b=${this.refs.searchBook.value}`)
-    .then((response) => this.setState({
-      searchBook: this.refs.searchBook.value,
-      searchResults: response.data
-    }))
-    .catch((error) => alert(error.message))
-  }
-
-  changeSearchType = (e) => {
-    e.preventDefault();
-    console.log(e.target.value);
+  getSearchResult = () => {
+    if(this.state.toggleSearch == "b"){
+      axios.get(`/search?b=${this.refs.searchBookBar.value}`)
+      .then((response) => this.setState({
+        searchText: this.refs.searchBookBar.value,
+        searchResults: response.data
+      }))
+      .catch((error) => console.log(error.message))
+    }
+    else if(this.state.toggleSearch == "u"){
+      axios.get(`/search?u=${this.refs.searchUserBar.value}`)
+      .then((response) => this.setState({
+        searchText: this.refs.searchUserBar.value,
+        searchResults: response.data
+      }))
+      .catch((error) => console.log(error.message))
+    }
   }
 
   setSearchType = (change) => {
     if(change.value == "User"){
-      this.setState({toggleSearch: "u"})
+      this.setState({toggleSearch: "u", keepDefault: change.value})
     }
     else if(change.value == "Book"){
-      this.setState({toggleSearch: "b"})
+      this.setState({toggleSearch: "b", keepDefault: change.value})
     }
   }
 
   render(){
-
     //---------- Dropdown Stuff --------------
-    const options = ["Book", "User"]
-    const defaultOption = options[0]
-
+    const options = ["Book", "User"];
+    const defaultOption = this.state.toggleSearch;
     //----------------------------------------
-
     return(
       <section className="books-comp">
         <div className="container">
@@ -97,38 +100,73 @@ class Books extends Component{
               <Dropdown
                 options={options}
                 onChange={this.setSearchType}
-                value={defaultOption} />
+                value={this.state.keepDefault} />
             </div>
             <div className="search-field">
               {this.state.toggleSearch == "b" &&
-                <form onChange={this.searchBook} action={`/search`}>
-                    <input type="text" ref="searchBook" placeholder="Search by Title" />
+                <form onChange={this.getSearchResult} action={`/search`}>
+                    <input type="text" ref="searchBookBar" placeholder="Search by Title" />
                 </form>
               }
               {this.state.toggleSearch == "u" &&
-                <form onChange={this.searchBook} action={`/search`}>
-                    <input type="text" ref="searchBook" placeholder="Search by Username" />
+                <form onChange={this.getSearchResult} action={`/search`}>
+                    <input type="text" ref="searchUserBar" placeholder="Search by Username" />
                 </form>
               }
             </div>
-            {this.state.searchBook &&
+          </section>
+          <div className="search-result">
+            {this.state.searchText && this.state.toggleSearch == "b" &&
               <div>
-                <h3>Showing results for "{this.state.searchBook}"</h3>
+                <h3>Showing Book results for "{this.state.searchText}"</h3>
                 <ul>
                   {this.state.searchResults.map((book) =>
-                    <li key={book.id}>
-                      <h5>{book.title}</h5>
-                      <p>{book.description}</p>
+                    <li key={book.id} className="book">
+                      <div className="card-panel grey lighten-4">
+                        <Link to={`/book/${book.id}`}>
+                          <div className="book-thumb">
+                            <Document className="title-img" file={book.attachment} onLoadSuccess={this.onDocumentLoadSuccess}>
+                              <Page pageNumber={1} renderTextLayer={false} width={170} renderAnnotationLayer={false} />
+                            </Document>
+                          </div>
+                          <h5 title={book.title}>{this.cropLength(book.title, 15)}</h5>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div className="sub-part left"><i className="fas fa-comment"></i><p>{book.commentCount}</p></div>
+                                </td>
+                                <td>
+                                  <div className="sub-part right"><i className="fas fa-thumbs-up"></i><p>{book.likeCount}</p></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </Link>
+                      </div>
                     </li>
                   )}
                 </ul>
               </div>
             }
-            {this.state.searchResults.length < 1 && this.state.searchBook &&
+            {this.state.searchText && this.state.toggleSearch == "u" &&
+              <div>
+                <h3>Showing User results for "{this.state.searchText}"</h3>
+                <ul>
+                  {this.state.searchResults.map((user) =>
+                    <li key={user.id}>
+                      <h5>{user.username}</h5>
+                      <p>{user.bio}</p>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            }
+            {this.state.searchResults.length < 1 && this.state.searchText &&
               <h5>No results to show......</h5>
             }
-          </section>
-          {!this.state.searchBook &&
+          </div>
+          {!this.state.searchText &&
             <div>
             <section>
               <div>
@@ -241,7 +279,6 @@ class Books extends Component{
       </section>
     )
   }
-
 }
 
 export default Books;
