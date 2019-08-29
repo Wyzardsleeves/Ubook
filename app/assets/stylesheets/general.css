@@ -302,7 +302,6 @@
   display:inline-block;
   position: relative;
   top: -1.2rem;
-
 }
 
 /* ---------- ----------- */
@@ -332,3 +331,13 @@
   margin-left: 2%;
 }
 /* -------------------------*/
+
+/* update comments */
+.edit-input-togg{
+  display: none;
+}
+
+.edit-input-content{
+  display: block;
+}
+/* --------------- */

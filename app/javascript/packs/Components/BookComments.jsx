@@ -103,6 +103,39 @@ class BookComments extends Component{
     location.reload();
   }
 
+  /* ------- comment edit ----------- */
+  newEdit = (e, passed) => {
+    e.preventDefault();
+    let passedID = passed.id;
+    let passedContent = passed.content;
+    let editInputField = document.getElementById(`edit-input-togg-${passedID}`);
+    let gettingEditted = document.getElementById(`content-show-${passedID}-val`);
+    editInputField.style.display = 'block';
+    gettingEditted.style.display = 'none';
+  }
+
+  cancelEdit = (e, passed) => {
+    e.preventDefault();
+    let passedID = passed.id;
+    let passedContent = passed.content;
+    let editInputField = document.getElementById(`edit-input-togg-${passedID}`);
+    let gettingEditted = document.getElementById(`content-show-${passedID}-val`);
+    editInputField.style.display = 'none';
+    gettingEditted.style.display = 'block';
+  }
+
+  editComment = (e, passedID) => {
+    e.preventDefault();
+    let content = document.getElementById(`edit-input-show-${passedID}-val`);
+    axios.put(`/books/${this.props.bookIndex}/book_comments/${passedID}`, {
+      content: content.value,
+    })
+    .then((response) => (response.data))
+    .catch((error) => console.log(error.message))
+    location.reload();
+  }
+  /* -------------------------------- */
+
 
   render(){
     return(
@@ -120,10 +153,20 @@ class BookComments extends Component{
                   <li>
                     <section className="card book-comment">
                       <div className="card-content ">
-                        <p className="left"><i>Posted by <NavLink to={`/user/${bComment.user_id}/books`}>{bComment.creator}</NavLink></i>{bComment.content}</p>
-                        <p className="right">Votes: {bComment.votes}</p><br/>
-                        <input className="btn btn-small blue lighten-2" type="button" value="Reply" onClick={(e) => this.newReply(e, bComment.id)} style={{marginRight: "8px"}} />
-                        <input className="btn btn-small red lighten-2" type="button" value="Delete" onClick={(e) => this.deleteComment(e, bComment.id)} />
+                        <div className="edit-input-content" id={`content-show-${bComment.id}-val`}>
+                          <p className="left"><i>Posted by <NavLink to={`/user/${bComment.user_id}/books`}>{bComment.creator}</NavLink></i>{bComment.content}</p>
+                          <p className="right" id={`content-show-${bComment.id}-val`}>{bComment.created_at != bComment.updated_at && <i>Edited</i>}</p><br/>
+                          <input className="btn btn-small blue lighten-2" type="button" value="Reply" onClick={(e) => this.newReply(e, bComment.id)} style={{marginRight: "8px"}} />
+                          <input className="btn btn-small orange lighten-2" type="button" value="Edit" onClick={(e) => this.newEdit(e, bComment)} style={{marginRight: "8px"}} />
+                          <input className="btn btn-small red lighten-2" type="button" value="Delete" onClick={(e) => this.deleteComment(e, bComment.id)} />
+                        </div>
+                        <div className='edit-input-togg' id={`edit-input-togg-${bComment.id}`} >
+                          <form onSubmit={(e) => this.editComment(e, bComment.id)}>
+                            <input type="text" id={`edit-input-show-${bComment.id}-val`} defaultValue={`${bComment.content}`}/>
+                            <input className="btn btn-small blue lighten-2" type="button" value="Submit" style={{marginRight: "8px"}} onClick={(e) => this.editComment(e, bComment.id)} />
+                            <input className="btn btn-small red lighten-2" type="button" value="Cancel" onClick={(e) => this.cancelEdit(e, bComment)} />
+                          </form>
+                        </div>
                       </div>
                     </section>
                     <section className="card reply-button" id={`reply-input-show-${bComment.id}`}>
@@ -144,6 +187,10 @@ class BookComments extends Component{
                     deleteButton={this.deleteComment}
                     newReply={this.newReply}
                     cancelReply={this.cancelReply}
+                    // new props
+                    newEdit={this.newEdit}
+                    editComment={this.editComment}
+                    cancelEdit={this.cancelEdit}
                   />
                 }
               </div>

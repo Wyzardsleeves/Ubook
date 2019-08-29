@@ -81,10 +81,10 @@ class Books extends Component{
 
   setSearchType = (change) => {
     if(change.value == "User"){
-      this.setState({toggleSearch: "u", keepDefault: change.value})
+      this.setState({toggleSearch: "u", keepDefault: change.value, searchText: ''})
     }
     else if(change.value == "Book"){
-      this.setState({toggleSearch: "b", keepDefault: change.value})
+      this.setState({toggleSearch: "b", keepDefault: change.value, searchText: ''})
     }
   }
 
@@ -172,7 +172,7 @@ class Books extends Component{
                 </ul>
               </div>
             }
-            {this.state.searchResults.length == 0 && this.state.searchText &&
+            {this.state.searchResults.length < 1 && this.state.searchText &&
               <h5>No results to show......</h5>
             }
           </div>

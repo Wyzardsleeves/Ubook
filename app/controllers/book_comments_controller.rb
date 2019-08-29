@@ -20,7 +20,7 @@ class BookCommentsController < ApplicationController
 
   def update
     @book_comment = BookComment.find(params[:id])
-    @book_comment.update!
+    @book_comment.update!(book_comment_params)
     if @book_comment.save
       render json: {success: "Comment changes were successful!"}
     else
