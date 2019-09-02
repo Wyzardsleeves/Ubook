@@ -10,7 +10,7 @@ const UserComments = (props) => {
         <ul>
           {props.user_comments.map((comment) =>
             <li key={comment.id}>
-              <h6>{comment.content} <i>{comment.created_at != comment.updated_at && Edited}</i></h6>
+              <h6>{comment.content}</h6>
             </li>
           )}
           {props.user_comments.length == 0 &&

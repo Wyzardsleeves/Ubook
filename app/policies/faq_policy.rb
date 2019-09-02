@@ -1,9 +1,9 @@
-class BookPolicy < ApplicationPolicy
-  attr_reader :user, :book
+class FaqPolicy < ApplicationPolicy
+  attr_reader :user, :faq
 
-  def initialize(user, book)
+  def initialize(user, faq)
     @user = user
-    @book = book
+    @faq = faq
   end
 
   # CRUD actions
@@ -11,20 +11,16 @@ class BookPolicy < ApplicationPolicy
     true
   end
 
-  def show?
-    is_published? || user_is_owner?
-  end
-
   def create?
-    @user.present?
+    user_is_admin?
   end
 
   def update?
-    user_is_owner?
+    user_is_admin?
   end
 
   def destroy?
-    user_is_owner? || user_is_admin?
+    user_is_admin?
   end
 
   class Scope < Scope
@@ -35,10 +31,6 @@ class BookPolicy < ApplicationPolicy
 
   #custom methods
   private
-  def is_published?
-    @book.published == 1
-  end
-
   def user_is_owner?
     @book.user_id == @user.id
   end

@@ -198,8 +198,9 @@
   margin: 0 0.5rem 0 0;
 }
 .unlist-button{
-  padding: 0.5rem;
+  padding: 0.4rem;
   display: inline-block;
+  border: 1.5px solid orange;
   border-radius: 4px;
   margin: 0;
 }
@@ -209,14 +210,13 @@
 }
 .unlist-button:hover{
   cursor: pointer;
-  background-color: lightblue;
+  background-color: #ffeecc;
 }
 
 
 .publish-button{
-  padding: 0.4rem;
+  padding: 0.5rem;
   display: inline-block;
-  border: 1.5px solid green;
   border-radius: 4px;
   margin: 0;
 }

@@ -26,10 +26,9 @@ class BookNew extends Component{
     formData.append('book[document]', this.state.documentFile);
 
     axios.post('/books/', formData)
-    .then((response) => console.log(response.data.document))
+    .then((response) => console.log(response.data))
     .catch((error) => console.log(error.message))
     this.props.history.push('/');
-    location.reload();
   }
 
   handleFile = (e) => {

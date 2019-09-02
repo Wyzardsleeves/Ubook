@@ -1,4 +1,5 @@
 class BookLikesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
     @book = Book.find(params[:book_id])
