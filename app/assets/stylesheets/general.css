@@ -1,5 +1,4 @@
 
-
 .show-book-comp i{
   padding: 0 1rem 0 0;
 }
@@ -341,3 +340,29 @@
   display: block;
 }
 /* --------------- */
+
+.recaptcha{
+  padding: 1rem 0;
+}
+
+.terms{
+  padding: 1rem 0;
+}
+
+.terms p{
+  width: 90%;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.term-agreed {
+  /*display: none;*/
+}
+
+.term-agreed i{
+  padding-right: 0.4rem;
+}
+
+#hidebox{
+  display: none;
+}

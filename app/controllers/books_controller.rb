@@ -35,7 +35,7 @@ class BooksController < ApplicationController
     book.published = 1
     authorize book
     if book.save
-      render json: {success: "#{book.title} was saved successfully!"}
+      render json: {success: "#{book.title} was saved successfully!", info: book}
     else
       render json: {error: "Book creation failed"}
     end

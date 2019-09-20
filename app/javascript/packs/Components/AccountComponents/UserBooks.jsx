@@ -18,7 +18,7 @@ const UserBooks = (props) => {
           </ul>
         }
         {props.user_books.length == 0 &&
-          <h5><i>No books have been uploaded by this user yet.....</i></h5>
+          <h5><i>No books have been uploaded by {props.user_data.username} yet.....</i></h5>
         }
       </div>
     </div>

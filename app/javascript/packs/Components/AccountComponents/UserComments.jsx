@@ -14,7 +14,7 @@ const UserComments = (props) => {
             </li>
           )}
           {props.user_comments.length == 0 &&
-            <h5><i>This User does not have any comments.....</i></h5>
+            <h5><i>{props.user_data.username} does not have any comments.....</i></h5>
           }
         </ul>
       </div>

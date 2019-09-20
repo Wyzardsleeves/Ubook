@@ -4,7 +4,7 @@
     <title>Ubook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -36,12 +36,47 @@
       </section>
     </nav>
     <div class="container">
-      <p class="notice green"><%= notice %></p>
-      <p class="alert red"><%= alert %></p>
+      <p class="notice lighten-2"><%= notice %></p>
+      <p class="alert lighten-2"><%= alert %></p>
     </div>
     <%= yield %>
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        // Initialize Materialize modal
+        $('.modal').modal();
+        //$('#agreeCheckBox').on("click", false);
+
+        //makes checkbox checkable on ooen
+        let termsOpen = document.getElementById('terms-open');
+        termsOpen.addEventListener("click", function(event){
+          event.preventDefault();
+          $('#agreeCheckBox').on("click", true);
+        })
+        // Cancel button (better than the built in one for Materialize)
+        let closeModal = document.getElementById('closeModalButton');
+        closeModal.addEventListener("click", function(event){
+          event.preventDefault();
+          $('#termsOfService').modal('close');
+
+        })
+        // Terms of service agree function for form
+        let agreeModal = document.getElementById('agreeModalButton');
+        agreeModal.addEventListener("click", function(event){
+          event.preventDefault();
+
+          //agree logic here
+          let agreeCheckBox = document.getElementById('agreeCheckBox');
+          let hidebox = document.getElementById('hidebox');
+          let termsOpen = document.getElementById('terms-open');
+          agreeCheckBox.checked = true;
+          termsOpen.style.display = 'none';
+          $('#termsOfService').modal('close');
+          hidebox.style.display = "block";
+          $('#agreeCheckBox').on("click", false);
+        });
+      })
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script></script>
   </body>
 </html>

@@ -70,7 +70,6 @@ class BookShow extends Component{
       })
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error.message))
-      alert("Are you sure you want to mark this book as 'Unlisted'?")
     }
     else{
       axios.put(`/books/${this.props.match.params.id}`,{
@@ -78,7 +77,6 @@ class BookShow extends Component{
       })
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error.message))
-      alert("Are you sure you want to set this book as 'Published'?")
     }
     location.reload();
     //this.props.history.push(`/book/${this.props.match.params.id}`)

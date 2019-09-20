@@ -248,41 +248,43 @@ class Books extends Component{
                 </ul>
               </div>
             </section>
-            <section>
-              <div>
-                <h3>Books that you Liked</h3>
-              </div>
-              <div>
-                <ul>
-                  {this.state.likedBooks.map((book) =>
-                    <li key={book.id} className="book">
-                      <div className="card-panel grey lighten-4">
-                        <Link to={`/book/${book.id}`}>
-                          <div className="book-thumb">
-                            <Document className="title-img" file={book.attachment} onLoadSuccess={this.onDocumentLoadSuccess}>
-                              <Page pageNumber={1} renderTextLayer={false} width={170} renderAnnotationLayer={false} />
-                            </Document>
-                          </div>
-                            <h5 title={book.title}>{this.cropLength(book.title, 15)}</h5>
-                            <table>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <div className="sub-part left"><i className="fas fa-comment"></i><p>{book.commentCount}</p></div>
-                                  </td>
-                                  <td>
-                                    <div className="sub-part right"><i className="fas fa-thumbs-up"></i><p>{book.likeCount}</p></div>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                        </Link>
-                      </div>
-                    </li>
-                  )}
-                </ul>
-              </div>
-            </section>
+            {this.state.likedBooks.length > 1 &&
+              <section>
+                <div>
+                  <h3>Books that you Liked</h3>
+                </div>
+                <div>
+                  <ul>
+                    {this.state.likedBooks.map((book) =>
+                      <li key={book.id} className="book">
+                        <div className="card-panel grey lighten-4">
+                          <Link to={`/book/${book.id}`}>
+                            <div className="book-thumb">
+                              <Document className="title-img" file={book.attachment} onLoadSuccess={this.onDocumentLoadSuccess}>
+                                <Page pageNumber={1} renderTextLayer={false} width={170} renderAnnotationLayer={false} />
+                              </Document>
+                            </div>
+                              <h5 title={book.title}>{this.cropLength(book.title, 15)}</h5>
+                              <table>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <div className="sub-part left"><i className="fas fa-comment"></i><p>{book.commentCount}</p></div>
+                                    </td>
+                                    <td>
+                                      <div className="sub-part right"><i className="fas fa-thumbs-up"></i><p>{book.likeCount}</p></div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                          </Link>
+                        </div>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </section>
+            }
           </div>
           }
         </div>

@@ -32,8 +32,40 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
+
+
+    <div class="terms">
+      <!-- Modal Trigger -->
+      <div id="terms-open">
+        <h6><a class="waves-effect waves-light modal-trigger" href="#termsOfService">Read Terms of Use</a></h6>
+      </div>
+
+      <div class="check_box" id="hidebox">
+        <label>
+          <%= f.check_box :agreed, id:"agreeCheckBox" %>
+          <span style="font-size: 1.15rem">Terms of Use</h6></span>
+        </label>
+      </div>
+      <!-- Modal Structure -->
+      <div id="termsOfService" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h3 class="center">Terms of Use</h3>
+          <%= render 'users/registrations/utility/termsOfUse' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn green lighten-2" id="agreeModalButton">Agree</button>
+          <button type="button" class="btn red lighten-2" id="closeModalButton">Disagree</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recaptcha">
+      <%= flash[:recaptcha_error] %>
+      <%= recaptcha_tags %>
+    </div>
+
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: 'btn' %>
     </div>
   <% end %>
 

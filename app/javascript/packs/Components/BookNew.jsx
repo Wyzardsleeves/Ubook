@@ -7,7 +7,7 @@ class BookNew extends Component{
   constructor(props){
     super(props);
     this.state = {
-      documentFile: null
+      documentFile: null,
     }
   }
 
@@ -20,6 +20,7 @@ class BookNew extends Component{
   }
 
   newBook = () => {
+    let routeID = 0;
     const formData = new FormData();
     formData.append('book[title]', this.refs.title.value);
     formData.append('book[description]', this.refs.description.value);
@@ -28,7 +29,7 @@ class BookNew extends Component{
     axios.post('/books/', formData)
     .then((response) => console.log(response.data))
     .catch((error) => console.log(error.message))
-    this.props.history.push('/');
+    this.props.history.push(`/`);
   }
 
   handleFile = (e) => {
