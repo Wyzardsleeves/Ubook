@@ -110,7 +110,13 @@ class BookShow extends Component{
                 publishedFunc={this.publishedFunc}
               />
               <div>
-                <p>Uploaded by <strong><NavLink to={`/user/${this.state.book.user_id}/books`}>{this.state.book.creator}</NavLink></strong> with {numPages} pages.</p>
+                <div className="book-user">
+                  <p>Uploaded by <strong><NavLink to={`/user/${this.state.book.user_id}/books`}>{this.state.book.creator}</NavLink></strong> with {numPages} pages.</p>
+                </div>
+                <div className="book-data">
+                  <h6><i className="fas fa-theater-masks"></i>{this.state.book.rating}</h6>
+                  <h6><i className="fas fa-boxes"></i>{this.state.book.category}</h6>
+                </div>
               </div>
               <div className="button">
                 <NavLink to={`/read/${bookIndex}`}>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const BookPublished = (props) => {
-  console.log(props.publish_stat)
   return(
     <div className="pub-btns">
       {props.publish_stat == 1 &&

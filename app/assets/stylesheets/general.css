@@ -1,4 +1,8 @@
 
+html {
+  overflow-y: scroll;
+}
+
 .show-book-comp i{
   padding: 0 1rem 0 0;
 }
@@ -7,6 +11,18 @@
 }
 .edit-book-comp i{
   padding: 0 1rem 0 0;
+}
+
+.book-sub-data{
+  width: 100%;
+}
+.book-category, .book-rating{
+  display: inline-block;
+  width: 20%;
+  margin: 1rem 1rem 1rem 0;
+}
+.book-category p, .book-rating p{
+  margin: 0;
 }
 
 .sub-nav-bar{
@@ -120,6 +136,20 @@
   font-size: 17px;
   margin: 0
 
+}
+
+.book-user p{
+  margin: 0.3rem 0;
+}
+.book-data h6{
+  font-size: 1.2rem;
+  display: inline-block;
+  padding-right: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.book-data h6 i{
+  padding-right: 0.4rem;
 }
 
 .title-img{
@@ -355,9 +385,6 @@
   text-align: justify;
 }
 
-.term-agreed {
-  /*display: none;*/
-}
 
 .term-agreed i{
   padding-right: 0.4rem;
