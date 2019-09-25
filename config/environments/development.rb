@@ -62,5 +62,5 @@ Rails.application.configure do
   #added by moi
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } # (In production, :host should be set to the actual host of your application.)
   config.action_controller.forgery_protection_origin_check = false
-  config.consider_all_requests_local = false
+  config.consider_all_requests_local = true
 end

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const UserComments = (props) => {
   return(
@@ -10,7 +11,24 @@ const UserComments = (props) => {
         <ul>
           {props.user_comments.map((comment) =>
             <li key={comment.id}>
-              <h6>{comment.content}</h6>
+              <section>
+                <div className="card-panel">
+                  <div>
+                    <h6>
+                      <i>Commented on </i>
+                      <Link to={`/book/${comment.book_data.id}`}>
+                        <strong>{comment.book_data.title}</strong>
+                      </Link>
+                    </h6>
+                  </div>
+                  <div>
+                    <h6>{comment.content}</h6>
+                  </div>
+                  <div>
+
+                  </div>
+                </div>
+              </section>
             </li>
           )}
           {props.user_comments.length == 0 &&
