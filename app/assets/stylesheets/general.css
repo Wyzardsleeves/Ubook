@@ -392,3 +392,8 @@ html {
 #hidebox{
   display: none;
 }
+
+.user-comment-content i, h6{
+  display: inline-block;
+  padding-right: 0.5rem;
+}

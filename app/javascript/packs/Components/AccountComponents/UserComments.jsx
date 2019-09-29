@@ -7,7 +7,7 @@ const UserComments = (props) => {
       <div className="user-sub-head">
         <h4><i className="fas fa-comments"></i>{props.user_data.username}'s Posted Comments</h4>
       </div>
-      <div>
+      <div className="user-comments">
         <ul>
           {props.user_comments.map((comment) =>
             <li key={comment.id}>
@@ -21,8 +21,10 @@ const UserComments = (props) => {
                       </Link>
                     </h6>
                   </div>
-                  <div>
+                  <div className="user-comment-content">
+                    <i class="fas fa-quote-left"></i>
                     <h6>{comment.content}</h6>
+                    <i class="fas fa-quote-right"></i>
                   </div>
                   <div>
 
