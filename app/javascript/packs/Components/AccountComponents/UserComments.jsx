@@ -20,14 +20,15 @@ const UserComments = (props) => {
                         <strong>{comment.book_data.title}</strong>
                       </Link>
                     </h6>
+                    <i>at {comment.book_data.created_at}</i>
                   </div>
                   <div className="user-comment-content">
-                    <i class="fas fa-quote-left"></i>
+                    <i className="fas fa-quote-left"></i>
                     <h6>{comment.content}</h6>
-                    <i class="fas fa-quote-right"></i>
+                    <i className="fas fa-quote-right"></i>
                   </div>
                   <div>
-
+                    {/* Foot stuff for the comment here */}
                   </div>
                 </div>
               </section>

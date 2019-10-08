@@ -5,6 +5,7 @@ import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import BookComments from './BookComments';
 import BookLikes from './BookLikes';
 import BookPublished from './BookPublished';
+import {Helmet} from 'react-helmet';
 
 class BookShow extends Component{
   constructor(props){
@@ -96,6 +97,10 @@ class BookShow extends Component{
     return(
       <div className="show-book-comp">
         <div className="container">
+          <Helmet>
+            <title>{`${this.state.book.title} on Ubook`}</title>
+            <meta name="description" content={`${this.state.book.title} by ${this.state.book.title} - ${this.state.book.description}`} />
+          </Helmet>
           <h3><i className="fas fa-book"></i>{this.state.book.title}</h3>
           <section className="card-panel grey lighten-4">
             <section className="book-show-image" ref="bookContain">

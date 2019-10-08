@@ -248,7 +248,7 @@ class Books extends Component{
                 </ul>
               </div>
             </section>
-            {this.state.likedBooks.length > 1 &&
+            {this.state.likedBooks.length > 0 &&
               <section>
                 <div>
                   <h3>Books that you Liked</h3>

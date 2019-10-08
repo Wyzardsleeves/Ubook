@@ -4,6 +4,7 @@ import UserBooks from './UserBooks';
 import UserComments from './UserComments';
 import UserLikedBooks from './UserLikedBooks';
 import axios from 'axios';
+import {Helmet} from 'react-helmet';
 
 class User extends Component{
   constructor(props){
@@ -40,6 +41,10 @@ class User extends Component{
   render(){
     return(
       <div className="container">
+        <Helmet>
+          <title>{`${this.state.userData.username}'s profile`}</title>
+          <meta name="description" content={`Books from ${this.state.userData.username}. Click to read on Ubook!`} />
+        </Helmet>
         <div className="user-head">
           <h3><i className="fas fa-user-circle"></i>{this.state.userData.username}'s Profile</h3>
           <h6>{this.state.userData.bio}</h6>

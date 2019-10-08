@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import BookShow from './BookShow';
 import Dropdown from 'react-dropdown';
-
+import {Helmet} from 'react-helmet';
 
 
 class BookEdit extends Component{
@@ -65,6 +65,9 @@ class BookEdit extends Component{
     const rating_options = ["Everyone", "Teen", "Mature", "Adults Only"];
     return(
       <section className="edit-book-comp">
+        <Helmet>
+          <title>Edit {this.state.editTitle}</title>
+        </Helmet>
         <div className="container">
           <section>
             <div>
