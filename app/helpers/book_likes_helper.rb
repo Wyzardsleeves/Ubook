@@ -1,0 +1,2 @@
+module BookLikesHelper
+end

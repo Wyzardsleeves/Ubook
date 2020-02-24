@@ -15,4 +15,10 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker!')
+console.log('Hello World from Webpacker!');
+
+let logoClick = document.getElementsByClassName('ubook-logo-png')[0];
+
+logoClick.addEventListener("click", function(){
+  window.location.replace('/');
+});

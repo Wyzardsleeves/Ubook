@@ -16,6 +16,8 @@ Tech Used:
 
 Instructions:
 
+* Initiate Webpack > npm install
+
 * Run > rails s
 
 * Run > npm run webpack

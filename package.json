@@ -1,18 +1,32 @@
 {
   "name": "Ubook",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.2",
+    "axios": "^0.18.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "jquery": "^3.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-activestorage-provider": "^0.8.0",
+    "react-dom": "^16.8.6",
+    "react-dropdown": "^1.6.4",
+    "react-dropdown-select": "^3.3.4",
+    "react-helmet": "^5.2.1",
+    "react-modal": "^3.9.1",
+    "react-pdf": "^4.0.5",
+    "react-router-dom": "^5.0.0",
+    "react-select": "^2.4.3"
   },
   "scripts": {
     "webpack": "./bin/webpack-dev-server"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.3.1"
-  }
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/Wyzardsleeves/Ubook.git",
+  "author": "Justin Lattimore <jlattimoreweb@gmail.com>"
 }

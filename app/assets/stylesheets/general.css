@@ -1,0 +1,399 @@
+html {
+  overflow-y: scroll;
+}
+
+.show-book-comp i{
+  padding: 0 1rem 0 0;
+}
+.new-book-comp i{
+  padding: 0 1rem 0 0;
+}
+.edit-book-comp i{
+  padding: 0 1rem 0 0;
+}
+
+.book-sub-data{
+  width: 100%;
+}
+.book-category, .book-rating{
+  display: inline-block;
+  width: 20%;
+  margin: 1rem 1rem 1rem 0;
+}
+.book-category p, .book-rating p{
+  margin: 0;
+}
+
+.sub-nav-bar{
+  border-bottom: solid 1px lightgrey;
+  height: 2.2rem;
+}
+
+.sub-nav-bar i{
+  font-size: 1.5rem;
+}
+
+.sub-nav-bar .sec-1{
+  display:inline-block;
+  float: left;
+}
+.sub-nav-bar .sec-1 a{
+  padding-right: 1rem;
+}
+.sub-nav-bar .sec-1 i{
+  padding-right: 0.4rem;
+}
+.sub-nav-bar .sec-1 i, .sub-nav-bar .sec-1 h5{
+  display: inline-block;
+  margin: 0;
+}
+
+
+.sub-nav-bar .sec-2{
+  display:inline-block;
+  float: right;
+}
+.sub-nav-bar .sec-2 a{
+  padding-left: 1rem;
+}
+.sub-nav-bar .sec-2 i{
+  padding-right: 0.4rem;
+}
+.sub-nav-bar .sec-2 i, .sub-nav-bar .sec-2 h5{
+  display: inline-block;
+  margin: 0;
+}
+
+.react-pdf__Page__canvas{
+  width: 100%;
+  height: 100%;
+}
+
+/* Control buttons */
+.control-buttons table{
+}
+
+.control-buttons i{
+  background-color: #efefef;
+  font-size: 2rem;
+  border-radius: 5px;
+  padding: 7px 1rem;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.controls-left{
+
+}
+
+.controls-center{
+  text-align:center;
+}
+
+.controls-right{
+
+}
+
+
+.page-change-form{
+  padding: 0;
+  display: inline-block;
+  width: 210px;
+}
+.page-change-form h5{
+  padding: 0;
+  font-size: 18px;
+  display: inline-block;
+}
+.page-change-form form{
+  padding: 0;
+  margin: 0 10px;
+  display: inline-block;
+  width: 40px;
+}
+.page-change-bot{
+  font-size: 12px;
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+.input-field[type="text"]{
+    font-size:34px;
+}
+
+.book{
+  margin: 0 10px;
+  width: 215px;
+  display: inline-block;
+}
+
+.book-thumb{
+  min-height: 230px;
+}
+
+.book a h5{
+  font-size: 17px;
+  margin: 0
+
+}
+
+.book-user p{
+  margin: 0.3rem 0;
+}
+.book-data h6{
+  font-size: 1.2rem;
+  display: inline-block;
+  padding-right: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.book-data h6 i{
+  padding-right: 0.4rem;
+}
+
+.title-img{
+  border-radius: 5px;
+  width: 100%;
+  height: 215px;
+  overflow:hidden;
+}
+
+.book td{
+  padding: 0;
+}
+
+.sub-part i, .sub-part p{
+  display: inline-block;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.sub-part i{
+  padding: 0 0.5rem 0 0;
+}
+
+.book-show-image{
+  display: inline-block;
+  width: 50%;
+}
+
+.card-panel{
+
+}
+
+/* Like Button */
+.like-btns{
+  display:inline-block;
+  margin: 0 0.5rem 0 0;
+}
+.like-button{
+  padding: 0.5rem;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.like-button i{
+  padding: 0;
+  margin: 0;
+}
+.like-button:hover{
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+
+.liked-button{
+  padding: 0.4rem;
+  display: inline-block;
+  border: 1.5px solid blue;
+  border-radius: 4px;
+  margin: 0;
+}
+.liked-button i{
+  padding: 0;
+  margin: 0;
+}
+.liked-button:hover{
+  cursor: pointer;
+  background-color: lightblue;
+}
+/* ------------------- */
+
+/* Published button */
+.pub-btns{
+  display:inline-block;
+  margin: 0 0.5rem 0 0;
+}
+.unlist-button{
+  padding: 0.4rem;
+  display: inline-block;
+  border: 1.5px solid orange;
+  border-radius: 4px;
+  margin: 0;
+}
+.unlist-button i{
+  padding: 0;
+  margin: 0;
+}
+.unlist-button:hover{
+  cursor: pointer;
+  background-color: #ffeecc;
+}
+
+
+.publish-button{
+  padding: 0.5rem;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 0;
+}
+.publish-button i{
+  padding: 0;
+  margin: 0;
+}
+.publish-button:hover{
+  cursor: pointer;
+  background-color: lightblue;
+}
+/* ------------------ */
+
+.book-show-info{
+  display: inline-block;
+  padding: 0 0 0 2rem;
+  width: 50%;
+  vertical-align: top;
+}
+
+.book-show-info a{
+  color: blue;
+}
+
+.book-show-info .button a{
+  color: white;
+}
+
+.book-show-info .button a p{
+  font-size: 1rem;
+  margin: 0 0 0.7rem 0;
+  padding: 0.5rem 5.4rem;
+  display: inline-block;
+}
+
+.comment-grey{
+  border-left: rgba(220, 220, 220, 0.8) 1px solid;
+}
+.reply-indent{
+  border-left: rgba(220, 220, 220, 0.8) 1px solid;
+  margin-left: 2rem;
+}
+.reply-indent:first-child{
+  border-left: rgba(220, 220, 220, 0.8) 1px solid;
+  margin-left: 0;
+}
+.reply-indent .reply-indent .reply-indent .reply-indent .reply-indent .reply-indent {
+  border-left: none;
+  margin-left: 0;
+}
+
+.reply-button{
+  display: none;
+}
+
+.user-page li{
+  display: inline-block;
+  padding-right: 1rem;
+}
+.user-page a, .user-page a h5{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+.user-head i, .user-sub-head i{
+  padding-right: 1rem;
+}
+
+/* ------ Search bar ------ */
+.search-bar{
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+.search-type{
+  width: 10%;
+  display:inline-block;
+  padding: 1rem 10px 0 0;
+  margin: 0 10px 0 0;
+}
+.search-field{
+  width: 80%;
+  display:inline-block;
+  position: relative;
+  top: -1.2rem;
+}
+
+/* ---------- ----------- */
+
+.main-book-content{
+  margin: 0 auto;
+}
+
+/* -------- User stuff -----*/
+.user-card{
+  width: 48%;
+  margin: 0 1%;
+  display: inline-block;
+}
+.user-image{
+  display: inline-block;
+  width: 28%;
+  margin-right: 2%;
+}
+.user-image img{
+  width: 100%;
+}
+.user-content{
+  vertical-align: top;
+  display: inline-block;
+  width: 68%;
+  margin-left: 2%;
+}
+/* -------------------------*/
+
+/* update comments */
+.edit-input-togg{
+  display: none;
+}
+
+.edit-input-content{
+  display: block;
+}
+/* --------------- */
+
+.recaptcha{
+  padding: 1rem 0;
+}
+
+.terms{
+  padding: 1rem 0;
+}
+
+.terms p{
+  width: 90%;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+
+.term-agreed i{
+  padding-right: 0.4rem;
+}
+
+#hidebox{
+  display: none;
+}
+
+.user-comment-content i, h6{
+  display: inline-block;
+  padding-right: 0.5rem;
+}

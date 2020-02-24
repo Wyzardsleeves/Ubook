@@ -5,7 +5,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import Books from './Components/Books'
+import ClientHome from './Components/ClientHome'
+import {HashRouter} from 'react-router-dom'
+
+//Beginning of modal
+import Modal from 'react-modal';
+
+Modal.setAppElement(document.body);
+//End of modal
 
 const Hello = props => (
   <div className="container">Hello {props.name}!</div>
@@ -21,8 +28,9 @@ Hello.propTypes = {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    //<Hello name="React" />,
-    <Books />,
+    <HashRouter>
+      <ClientHome />
+    </HashRouter>,
     document.body.appendChild(document.createElement('div')),
   )
 })
